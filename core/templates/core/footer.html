@@ -1,0 +1,97 @@
+{% load static %}
+
+<style>
+    @media screen and (min-width: 767px) {
+  .conmar {
+      position:relative;
+      right:10px;
+    
+  }
+}
+</style>
+
+    
+    <!-- ==============================================
+    ** Footer **
+    =================================================== -->
+    <footer class="footer">
+        <!-- Start Footer Top -->
+        <div    class="container conmar">
+            <div class="row py-2 " style="padding-top: 25px !important; padding-bottom: 15px  !important ; " >
+                <div class="col-lg-5 py-2 " style="margin-top:20px" >
+
+                    <h3>About US</h3>
+                    <p class="text-jusitfy"  style=" text-align: left !important; color:white !important " >
+                      Quiztainment is a timed interactive and educational game. Our goal with this platform is to keep you entertained and informed. Aside from being entertaining and exciting, we believe quizzes and competitions are always useful in increasing knowledge and confidence. Our quizzes present exciting challenges on the go with bigger prizes.
+                    </p>
+
+
+                </div>
+                <div class = 'col-lg-3 py-2 ' style="margin-top:20px" > 
+                    <h3 style="">  Quick links </h3>
+
+        
+                    <div>
+                    <ul style="list-style:none;padding:1px;" >
+                        <li><a href=" {% url 'home' %} " style="color:white; font-size: 14px ; "  > Home </a></li>
+                        <li><a href=" {% url 'mini_blog' %} " style="color:white; font-size: 14px ; " > Blogs </a></li>
+                        <li><a href=" {% url 'faq' %} " style="color:white; font-size: 14px ; " > FAQ's </a></li>
+                        <li><a href=" {% url 'policy' %} " style="color:white; font-size: 14px ; " > Privacy Policy </a></li>
+                        <li><a href=" {% url 'terms' %} " style="color:white; font-size: 14px ; " > Terms And Conditions</a></li>
+                    </ul>
+
+
+                </div>
+
+                </div>
+
+                <div class="col-lg-4"  style="margin-top:20px"  >
+
+                        <h3 style="" >Connect with Us</h3>
+                        <ul style="margin-left: 0px !important; padding: 0px ; "   class="follow-us clearfix">
+                            <li><a href="https://www.facebook.com/quiztainmentpak" target="_blank" ><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UC14RPc5q8OKMxT_bGMTrX6g"  target="_blank" ><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/quiztainment/" target="_blank" ><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        </ul>
+
+
+                    <div>
+                        <img src="{% static 'core/images/quiztainment-logo-footer.png' %}  " class="img-responsive" alt="">
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                
+
+
+                
+
+            </div>
+
+            
+        </div>
+        <!-- End Footer Top -->
+        <!-- Start Footer Bottom -->
+        <div class="bottom">
+            <div class="container ">
+                <center> 
+                <!--div class="footer-logo hidden-xs">
+                    <a href=" {% url 'home' %} "><img src="images/quiztainment-logo-footer-.png" class="img-responsive" alt=""></a></div-->
+                <p style = "color:white;">© 2022 <span> Quiztainment </span>. All rights reserved</p>
+            </center>
+            </div>
+        </div>
+        <!-- End Footer Bottom -->
+    </footer>
+
+    

@@ -1,0 +1,139 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+
+{% block title %}
+<title>Quiztainment-Login</title>
+{% endblock title %}
+
+
+{% block extra_header_meta_tag %}
+<meta name="title" content="Login: | Quiztainment"> 
+<meta name="description" content="We have thousands of GK quizzes and tests online at Quiztainment. To learn through real-time testing, Simply Login/ Register the desired information link....">
+{% endblock extra_header_meta_tag %}   
+
+
+
+
+
+{% block content %}
+
+
+
+
+
+    <!-- ==============================================
+    ** Login **
+    =================================================== -->
+    <section class="login-wrapper" >
+
+
+
+
+        <div class="inner "  >
+
+           
+
+
+            <div class="login" style="border:2px solid black !important"   >
+                <p>
+                    {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags %}
+                        <div class="alert  alert-{{ message.tags }} alert-dismissible " role="alert" 
+
+                        {% if message.tags == 'warning' %}
+                        style="background-color:#FF9E19 !important; color:white " 
+                        {% else %}
+                            style="background-color: #51B560 !important; color:white " 
+                        {% endif  %}
+
+                        >
+                          <button type="button " class="close p-0 btn  btn-sm  text-white  h-100 " data-dismiss="alert" aria-label="Close">
+                            <a class="close-link"><i class="fa fa-2x fa-close " style="color:white !important" ></i></a>
+                          </button>
+                          <strong>{{ message.tags }}!</strong> {{ message }}
+                          </div>
+      
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+  
+
+                </p>
+                <div class="head-block">
+
+                    <h1 class="" >  Login  </h1>
+                </div>
+                <div class="cnt-block">
+
+            
+                        <table class="table table-sm small p-0 m-0" >
+                        <form action="" method="POST" novalidate>
+                            {% csrf_token %}  
+                            {{  user_login_form }}      
+
+                        
+                        {% if continue %}
+                        <tr>
+                            <td colspan="2" > 
+                                <input type="hidden"  id = 'user_login_password' name="user_login_password" value = '{{ user_login_password }}'>
+                                <input type="hidden"  id = 'uname' name="uname" value = '{{ uname }}'>
+                                <button  class="btn btn-success btn-block mb-4" type="submit" name ='continue' > Continue </button>
+                            </td>
+
+                        
+                         {% else %}
+                         <td colspan="2" class = 'text-right' > 
+                             <!--a href = '{% url  'register'  %}'  class="btn"  style = 'color:white !important' >    Register  </a--> 
+                            <span style="padding-top: 10px; padding-bottom: 10px; float: left; text-align:left; font-size: 15px;">If you don't have an account<br>then click <a href="{% url 'register' %}" style="color: #14A43B; text-decoration: none;">Register</a>! </span>
+                            <button type="submit"  value="Login" class="btn" name = 'login'   > Login  <span class="icon-more-icon"></span> </button>
+
+
+                        </td>
+
+                        </tr>
+
+                         
+                        {% endif %}
+                
+
+
+                    </form>
+                    <tr>
+                        <td colspan="2"> 
+                            <div class="login-footer" style="background-color:#14A43B ;" >
+                                <ul class="follow-us clearfix"  >
+
+                                    <li><a href="https://www.facebook.com/quiztainmentpak">
+                                        <i class="fa-2x fa fa-facebook"  style="color:black !important"  aria-hidden="true"></i></a></li>
+                                    <li><a href="https://www.youtube.com/channel/UC14RPc5q8OKMxT_bGMTrX6g">
+                                        <i class=" fa-2x fa fa-youtube-play" style="color:black !important"  aria-hidden="true"></i></a></li>
+                                    <li><a href="https://www.instagram.com/quiztainment/">
+                                        <i class=" fa-2x fa fa-instagram"  style="color:black !important" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class=""  >
+                        <td colspan = '2' >  <a href=" {% url  'password_reset'  %} "> Forget Password ?  </a>  </td>
+                    </tr>
+                    </table>
+        
+
+
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock content %}
+    
+  
+

@@ -1,0 +1,65 @@
+{% extends "core/base.html" %}
+
+{% load embed_video_tags %}
+{% load static %}
+
+
+{% block extra_header_meta_tag %}
+<meta name="title" content="Blog | Quiztainment"> 
+<meta name="description" content="Thank you for visiting our blog. Improve your general knowledge by taking the quizzes here. The following are the questions that need to be answer and win prizes">
+{% endblock extra_header_meta_tag %}   
+
+
+
+
+{% block content %}
+
+
+
+<div class="container">
+
+    <div class="row  " style="margin-top: 30px ;  margin-bottom: 30px ; " >
+
+        
+        <div class="col-sm-12  ">
+            <div class="content">
+                <h1 class="text-center" >Blog</h1>
+            </div>
+        </div>
+        <hr>
+
+        {% for i in post  %}
+          
+        
+        <div class="col-lg-6  mt-2 ">
+                <div class="post-heading jumbotron card p-2  " style="background-color:  white; border:1px solid gray " >
+
+                <h5> {{ i.title }} </h5>
+                <hr>
+                <p class="subheading" style="text-align: justify; font-size: 12px ; " >
+                </p>
+                <p style="height: 250px;" >
+                    {% if i.pic %}
+                    <img src="{{ i.pic.url }}" alt="" style="width: 100%; height: 250px; ;" >                      
+                    {% endif %}
+                </p>
+                <p>  
+                <span class="meta">
+                    Posted  {{ i.creation }}
+                </span>
+            </p>
+            <p>  <a href=" {% url 'mini_blog_detail'  i.slug %}"> <button class="btn btn-denger" >  View More  </button>  </a> </p>
+            </div>
+        </div>
+
+        {% endfor %}
+
+
+
+        </div>
+    </div>
+
+
+{% endblock content %}
+    
+  

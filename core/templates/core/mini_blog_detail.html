@@ -1,0 +1,73 @@
+{% extends "core/base.html" %}
+
+{% load embed_video_tags %}
+{% load static %}
+
+
+{% block extra_header_meta_tag %}
+
+{% for i in post  %}
+
+<meta name="title" content="{{ i.meta_title }}"> 
+<meta name="description" content="{{  i.meta_description  }}">
+
+{% endfor %}
+
+
+
+{% endblock extra_header_meta_tag %}   
+
+
+
+
+
+
+{% block content %}
+
+
+
+<div class="container">
+
+    <div class="row  " style="margin-top: 30px  !important;  margin-bottom: 30px !important ; " >
+
+        <hr>
+
+        {% for i in post  %}
+          
+        
+        <div class="col-lg-12  mt-2 ">
+
+            <article class="border shadow-sm p-3 mb-3"  >
+
+                <h1 class="">  {{ i.title }} </h1>
+
+
+                <div class="post-heading  card p-2  " style="background-color:  white; color:black; padding-top: 10px; padding-bottom: 10px  ;  " >
+
+                <hr>
+                <p class="subheading" style="text-align: justify; font-size: 12px ; " >
+
+                    {{ i.msg|safe }}                
+                </p>
+                <p>  
+                <span class="meta">
+                    Posted  {{ i.creation }}
+                </span>
+            </p>
+
+        </article>
+
+            </div>
+        </div>
+
+        {% endfor %}
+
+
+
+        </div>
+    </div>
+
+
+{% endblock content %}
+    
+  

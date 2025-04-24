@@ -1,0 +1,141 @@
+
+{% extends 'core/base.html'%}
+
+{% block pagetitle %}
+<title>  Login  </title>
+{% endblock pagetitle %}
+
+
+{% block social_icon_side_bar %}
+{% endblock social_icon_side_bar %}
+
+
+{% block slider %}
+{% endblock slider %}
+
+    {% block maincontent %}
+    <div class="cointainer py-5 ">
+        <div class="row justify-content-around">
+            <div class="col-lg-4 col-sm-12 col-md-4 p-4  card ">                <h3 class="text-center"> Login</h3>
+                <div class="py-1 text-center ">                    {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags %}
+                        <div class="alert alert-{{ message.tag }} text-center ">
+                            <strong>  {{message.tags }} !</strong> {{message}}.
+                        </div>
+                        {% endif %}
+
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="card mt-3 ">
+                    {% if form %}
+
+                    <form class="p-4" action="" method="POST" novalidate >
+                        <!-- Email input -->
+                        {% csrf_token %}
+
+                        {% for fm in form %}
+                        <div class="form-outline mb-4">
+                            {{ fm.label_tag }}
+                            {{ fm }}                            <div style="color: red;" >  {{ fm.errors|striptags  }} </div>
+
+                        </div>
+                        {% endfor %}
+
+                        <!-- Submit button -->
+                        <input type="submit"  style  = "background-color: #1B1053; font-variant: small-caps;"  class="btn btn-primary btn-block mb-4" value="Login" />                    </form>
+
+                        <!-- Register buttons -->
+                        <!-- 2 column grid layout for inline styling -->
+                        <div class="row px-4 justify-content-around ">
+
+                          <div class="col-5 ">
+                            <!-- Simple link -->
+                            <a href="{% url 'reset_password' %}">Forgot password?</a>
+                          </div>
+
+                          <div class="col-7 ">
+                            <div class="text-center">
+                              <p>Not a member? <a href="{% url 'signup' %}"   >Register</a></p>
+                            </div>
+                              </div>
+
+
+                        </div>
+
+
+
+                      {% endif %}
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    {% endblock maincontent %}
+
+
+
+
+<form>
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <input type="email" id="form2Example1" class="form-control" />
+      <label class="form-label" for="form2Example1">Email address</label>
+    </div>
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <input type="password" id="form2Example2" class="form-control" />
+      <label class="form-label" for="form2Example2">Password</label>
+    </div>
+    <!-- 2 column grid layout for inline styling -->
+    <div class="row mb-4">
+      <div class="col d-flex justify-content-center">
+        <!-- Checkbox -->
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+          <label class="form-check-label" for="form2Example31"> Remember me </label>
+        </div>
+      </div>
+      <div class="col">
+        <!-- Simple link -->
+        <a href="#!">Forgot password?</a>
+      </div>
+    </div>
+    <!-- Submit button -->
+    <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+    <!-- Register buttons -->
+    <div class="text-center">
+      <p>Not a member? <a href="#!">Register</a></p>
+      <p>or sign up with:</p>
+      <button type="button" class="btn btn-link btn-floating mx-1">
+        <i class="fab fa-facebook-f"></i>
+      </button>
+      <button type="button" class="btn btn-link btn-floating mx-1">
+        <i class="fab fa-google"></i>
+      </button>
+      <button type="button" class="btn btn-link btn-floating mx-1">
+        <i class="fab fa-twitter"></i>
+      </button>
+      <button type="button" class="btn btn-link btn-floating mx-1">
+        <i class="fab fa-github"></i>
+      </button>
+    </div>
+  </form>

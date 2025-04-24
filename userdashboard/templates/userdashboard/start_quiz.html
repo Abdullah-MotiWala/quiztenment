@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    {% block user_dashboard_meta_html %}
+
+    {% include 'userdashboard/user_dashboard_meta_html.html' %} 
+
+
+
+    
+    {% endblock user_dashboard_meta_html %}
+
+
+    
+    {% block user_dashbaord_title %}
+      
+    <title> Start Quiz  </title>
+
+
+    {% endblock user_dashbaord_title %}
+      
+        
+
+
+    
+    {% block header_html_links %}
+    {% include 'userdashboard/header_html_links.html' %}
+      
+    {% endblock header_html_links %}
+      
+
+
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+
+
+        
+        {% block user_dashboard_side_menu %}
+        {% include 'userdashboard/user_dashboard_side_menu.html' %}
+          
+        {% endblock user_dashboard_side_menu %}
+          
+
+
+        {% block use_dashboard_top_navigation %}
+        {% include 'userdashboard/use_dashboard_top_navigation.html' %}
+          
+        {% endblock use_dashboard_top_navigation %}
+          
+
+
+
+
+
+        {% block use_dashboard_content %}
+          
+          
+
+
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <!-- top tiles Heading  -->
+          <div class="row" style="display: inline-block;" >
+          <div class="tile_count">
+
+          </div>
+        </div>
+          <!-- /top tiles Heading -->
+
+
+          <!-- Main Content row  -->
+    
+
+          <div class="row">
+            <div class=" col-lg-12">
+
+              {% if messages %}
+              {% for message in messages %}
+                  {% if message.tags %}
+                  <div class="alert alert-{{ message.tags }} alert-dismissible " role="alert">
+                    <button type="button " class="close p-0 btn  btn-sm  text-white  h-100 " data-dismiss="alert" aria-label="Close">
+                      <a class="close-link"><i class="fa fa-close"></i></a>
+                    </button>
+                    <strong>{{ message.tags }}!</strong> {{ message }}
+                    </div>
+
+                  {% endif %}
+              {% endfor %}
+          {% endif %}
+
+
+
+            </div>
+          </div>
+
+
+
+          <div class="row justify-content-around d-flex  ">
+            <div class="col-md-12 col-sm-12    ">
+              <div class="dashboard_graph">
+
+                <div class="row x_title">
+                  <div class="col-md-6">
+                    <h3>  Quiz Detail </h3>
+                  </div>
+                  <div class="col-md-6">
+
+                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                      <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                    </div>
+                  </div>
+                </div>
+
+                
+                {% if quiz_data %}
+
+                <div class="row justify-content-around d-flex  ">
+
+
+                    <div class="col-md-5 col-sm-11 col-lg-5 card  shadow ">
+                        <table class="table table-sm ">
+                            <tr>
+                                <td> Quiz Name </td>
+                                <td>   {{  quiz_data.quizopen.quiz_name }} </td>
+                            </tr>
+                            <tr>
+                                <td> Price Name </td>
+                                <td> {{  quiz_data.quizopen.price_name  }} </td>
+                            </tr>
+                            <tr>
+                                <td> Questions # </td>
+                                <td> {{  quiz_data.quizopen.quiz_numbers }} </td>
+                            </tr>
+                            <tr>
+                                <td> Start Date Time </td>
+                                <td> {{  quiz_data.quizopen.start_date_time }} </td>
+                            </tr>
+                            <tr>
+                                <td> End Date Time </td>
+                                <td> {{  quiz_data.quizopen.end_date_time }} </td>
+                            </tr>
+                            <tr>
+                                <td> Status </td>
+                                <td> {{  quiz_data.quizopen.status }} </td>
+                            </tr>
+    
+                            <tr>
+                              <td> Remaining Time </td>
+                              
+                              <td> {{  remaining_time }} </td>
+                          </tr>
+
+
+                            <tr>
+                                <td> Duration </td>
+                                <td> {{  quiz_data.quizopen.status }} </td>
+                            </tr>
+                        </table>
+                        <p class="p-3 w-100  " style="bottom: 0px; position:absolute ;" >
+                          <a href="{% url  'attempt_quiz'  assigned_questions_id.id   %}">
+                            <button class="btn w-100 btn-dark text-white " > Start Quiz </button>
+                          </a>
+    
+                        </p>
+                    </div>
+    
+                    <div class="col-md-5  card col-sm-12 col-lg-5 rounded shadow  " style="background-color: #2B3E54 ;" >
+                        <div class="text-center mt-4 " >
+                            <img src="{% static 'core/images/prod-2.jpg' %}" class="img-fluid text-center " 
+                            width="160px" style="height: 150px !important;"  alt="">
+                        </div>
+                        <div class="py-4" > 
+                            <h4 class="text-center"> Policy </h4>
+                            <p>
+                                <ul>
+                                    <li> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore, quia!</li>
+                                    <li> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore, quia!</li>
+                                    <li> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore, quia!</li>
+                                    <li> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore, quia!</li>
+                                    <li> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore, quia!</li>
+                                    <li> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore, quia!</li>
+                                </ul>
+                            </p>
+    
+    
+                        </div>
+                    </div>
+    
+                    <div>
+    
+    
+                    
+    
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+                    
+                {% endif %}
+                    
+
+
+
+          </div>
+          <br />
+
+          <!-- /Main Content row  -->
+
+
+
+
+
+        </div>
+        <!-- /page content -->
+
+
+        {% endblock use_dashboard_content %}
+
+
+        
+        {% block use_dashboard_footer %}
+     
+        {% endblock use_dashboard_footer %}
+      </div>
+    </div>
+
+    
+    {% block footer_js_links %}
+    {% include 'userdashboard/footer_js_links.html' %}      
+    {% endblock footer_js_links %}
+
+
+
+    {% block extra_footer_js_links %}
+    {% include 'userdashboard/extra_footer_js_links.html' %}      
+    {% endblock extra_footer_js_links %}
+
+
+	
+  </body>
+</html>

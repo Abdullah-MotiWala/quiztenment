@@ -1,0 +1,39 @@
+{% load static %}
+        <!-- Start Header Middle -->
+        <div class="container header-middle">
+            <div class="row"> 
+                <span class="col-xs-6 col-sm-3">
+                    <a href="{% url  'home'  %}">
+
+                        <img style = "position:relative;top:15px;" src="{% static 'core/images/quiztainment-logo-nav.png' %}  " class="img-responsive" alt=""></a>
+    
+                    </span>
+                        
+                <div class="col-xs-6 col-sm-3"></div>
+                <div class="col-xs-6 col-sm-9">
+                    <div class="ticker">
+                        <div class="news">
+                            <marquee class="news-content">
+                                <p style="color:green; font-weight: 900;">
+                                    
+                                    <!--{% if quiz_data   %}
+                                    ENTRIES OPEN TILL {{ quiz_data.end_date_time }}                                                                                  
+                                    {% endif %}-->
+                                    PLAY & EARN FOR FREE
+                                        
+                                </p>
+                            </marquee>
+                        </div>
+                    </div>
+                
+                    <div class="contact clearfix">
+                        <ul class="hidden-xs">
+                            <li> <span>EMAIL US</span> <a href="mailto:info@quiztainment.com.pk" target="_blank" > info@quiztainment.com.pk </a> </li>
+                            <li> <span>CALL US</span>  <a href=”tel:+923241237566“ target="_blank"  style="color:black;" >   +92 324 1237566 </a>  </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Header Middle -->
+      

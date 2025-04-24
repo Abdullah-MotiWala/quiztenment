@@ -1,0 +1,234 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    {% block user_dashboard_meta_html %}
+
+    {% include 'userdashboard/user_dashboard_meta_html.html' %} 
+
+
+
+    
+    {% endblock user_dashboard_meta_html %}
+
+
+    
+    {% block user_dashbaord_title %}
+      
+    <title> User Profile  </title>
+
+
+    {% endblock user_dashbaord_title %}
+      
+        
+
+
+    
+    {% block header_html_links %}
+    {% include 'userdashboard/header_html_links.html' %}
+      
+    {% endblock header_html_links %}
+      
+
+
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+
+
+        
+        {% block user_dashboard_side_menu %}
+        {% include 'userdashboard/user_dashboard_side_menu.html' %}
+          
+        {% endblock user_dashboard_side_menu %}
+          
+
+
+        {% block use_dashboard_top_navigation %}
+        {% include 'userdashboard/use_dashboard_top_navigation.html' %}
+          
+        {% endblock use_dashboard_top_navigation %}
+          
+
+
+
+
+
+        {% block use_dashboard_content %}
+          
+          
+
+
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <!-- top tiles Heading  -->
+          <div class="row" style="display: inline-block;" >
+          <div class="tile_count">
+
+          </div>
+        </div>
+          <!-- /top tiles Heading -->
+
+
+          <!-- Main Content row  -->
+
+          <div class="row justify-content-around d-flex  ">
+            <div class="col-md-12 col-sm-12    ">
+              <div class="dashboard_graph">
+                <div class="row x_title">
+                  <div class="col-md-8">
+                    <h3>  Personal Information </h3>
+                  </div>
+                  <div class="col-md-4">
+                    <h3 class="text-right" > 
+                      {% if add_button  %}                        
+                      <a href="  {% url  'add_profile'  %}   "> <button class="btn btn-success  " style="color:white !important" > Add Profile   </button>   </a>
+                      {% else %}
+                      <a href="  {% url  'update_profile'    %}   "> <button class="btn   " style="color:white !important; background-color:  #14A43B ;" > Update    </button>   </a>
+                      {% endif %}                           
+                      </h3>
+                  </div>
+
+                  
+
+
+
+
+                </div>
+
+                
+                <div class="row">
+                  <div class="col-lg-12">
+
+                    {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible " role="alert">
+                          <button type="button " class="close p-0 btn  btn-sm  text-white  h-100 " data-dismiss="alert" aria-label="Close">
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                          </button>
+                          <strong>{{ message.tags }}!</strong> {{ message }}
+                          </div>
+
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+
+
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-8">
+                    <table  border = "1" class="table  table-light rounded shadow  jumbotron jumbotron-fluid " 
+                    style="font-size: 17px; font-family:'Times New Roman', Times, serif ; background-color:white ;" 
+                    >
+                      {% for i  in  player  %}
+                      <tr>
+                        <td style="width: 30% ;" > Username </td> <td> {{ i.users.username  }}</td>
+                      </tr>
+                      <tr>
+                        <td> User Name </td> <td> {{ i.users.first_name  }}</td>
+                      </tr>
+                      <tr>
+                        <td> Email </td> <td> {{ i.users.email  }}</td>
+                      </tr>
+                      <tr>
+                        <td> Name As Per CNIC </td> <td> {{ i.cnic_name  }}</td>
+                      </tr>
+
+                      <tr>
+                        <td> NIC/ Passport </td> <td> {{ i.nic  }}</td>
+                      </tr>
+                      <tr>
+                        <td> Mobile </td> <td> {{ i.mobile  }}</td>
+                      </tr>
+                      <tr>
+                        <td> City </td> <td> {{ i.city  }}</td>
+                      </tr>
+
+                      <tr>
+                        <td> State </td> <td> {{ i.state  }}</td>
+                      </tr>
+                      <tr>
+                        <td> Country </td> <td> {{ i.country  }}</td>
+                      </tr>
+                      <tr>
+                        <td> Address </td> <td> {{ i.address  }}</td>
+                      </tr>
+
+                      {% endfor %}
+
+
+
+
+                    </table>
+
+
+
+
+                  </div>
+
+                  <div class="col-lg-3"> 
+
+                    <div  style="width:  100%; height:200px; " >
+
+                      {% if  picture_url.picture  %}
+                    
+                      <img src="{{ picture_url.picture.url }}" class="img-fluid"  alt="">
+                      
+                      {% endif %}
+                        
+                    
+
+
+                    </div>
+                  </div>
+
+                </div>
+
+
+
+          </div>
+          <br />
+
+          <!-- /Main Content row  -->
+
+
+
+
+
+        </div>
+        <!-- /page content -->
+
+
+        {% endblock use_dashboard_content %}
+
+
+        
+        {% block use_dashboard_footer %}
+     
+        {% endblock use_dashboard_footer %}
+      </div>
+    </div>
+
+    
+    {% block footer_js_links %}
+    {% include 'userdashboard/footer_js_links.html' %}      
+    {% endblock footer_js_links %}
+
+
+
+    {% block extra_footer_js_links %}
+    {% include 'userdashboard/extra_footer_js_links.html' %}      
+    {% endblock extra_footer_js_links %}
+
+
+	
+  </body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+https://quiztainment.com.pk/sitemap.xml
+Crawl-delay: 15 second

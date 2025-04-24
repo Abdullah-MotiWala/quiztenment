@@ -1,0 +1,112 @@
+{% extends "core/base.html" %}
+
+{% load embed_video_tags %}
+{% load static %}
+
+{% block extra_header_meta_tag %}
+<meta name="title" content="Online General knowledge Competition I Quiztainment: | Quiztainment">
+<meta name="description"
+  content="Play Online Quiz And Win Mobile, Laptop & Many More Exciting Prizes, Test your knowledge with Quiztainment, It consists of General knowledge M.C.Q's">
+{% endblock extra_header_meta_tag %}
+
+
+{% block content %}
+
+{% include 'core/main_index_content.html' %}
+
+
+<div class="modal fade" id="modal-xl">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="color:red;">BREAKING NEWS</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <h2 class='py-2' style="color:black;  text-align: center;"> PLAY & EARN FOR FREE </h2>
+
+            <br>
+            <p class='text-justify' style="color:black;">
+
+              Dear valued participants, this is to inform you that owing to
+              <b> disruption in
+                payment gateway </b> facility we are constraint to
+              <b>temporarily freeze </b> the ongoing monthly segment that was scheduled
+              to end on 15-03-2023. We are resolving the issue and shall resume very soon.
+            </p>
+            <p class='text-justify' style="color:black">
+
+            <h5 style="color: green; text-align: center;"> GOOD NEWS! </h5>
+            <span style="color:black"> Till the resumption of our monthly segment we invite you to
+              <b> REGISTER & PLAY FOR FREE. </b>
+            </span>
+            </p>
+
+            <p class='text-justify' style="color:black;">
+
+              This is a limited time offer allowing you
+              <b> to play, score and win </b>
+              surprise cash rewards. Top scorers will be rewarded upon resumption of monthly segment. We value and
+              appreciate your interest.
+
+
+            </p>
+
+            <br>
+            <p class='text-justify' style="color:black;">
+
+              Sincerely,
+              <br>
+              Director Digital Operations
+              <br>
+              <b>
+                Quiztainment
+              </b>
+            </p>
+
+
+
+
+
+
+
+          </div>
+
+        </div>
+
+
+
+
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+
+<script src="{% static 'core/js/jquery.min.js' %} "></script>
+
+<script type="text/javascript">
+  $(window).on('load', function () {
+    console.log("Loading Function Called. ")
+    $('#modal-xl').modal('show');
+    console.log("Loading Function Called. Model called. ")
+
+  });
+</script>
+
+{% endblock content %}

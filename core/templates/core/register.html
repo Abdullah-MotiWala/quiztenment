@@ -1,0 +1,158 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+
+{% block title %}
+<title>Quiztainment-Register</title>
+{% endblock title %}
+
+
+
+
+{% block content %}
+
+
+
+<!-- ==============================================
+    ** Register **
+    =================================================== -->
+<section class="login-wrapper register">
+    <div class="inner">
+        <div class="regiter-inner">
+            <div style="padding: 60px 0px !important;" class="head-block">
+
+
+                <div class="row">
+                    <div class="col-lg-2"></div>
+
+                    <div class="col-lg-8 px-5 " style="">
+
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible " role="alert"
+                            style="background-color: #FF9500 !important; color:white ">
+                            <button type="button " class="close p-0 btn  btn-sm  text-warning  h-100 "
+                                data-dismiss="alert" aria-label="Close">
+                                <a class="close-link"><i class=" fa-2x fa fa-close"></i></a>
+                            </button>
+                            <strong>{{ message.tags }}!</strong> {{ message }}
+                        </div>
+
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
+
+
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-4 py-3 formRegister" style="border: 1px solid gray !important ">
+                        <h1 class="" style="padding-bottom:  20px !important;">Register</h1>
+                        <form action="" method="POST" novalidate>
+                            {% csrf_token %}
+                            <table class="table table-sm small p-0 m-0">
+                                {% for fm in form %}
+                                <tr>
+                                    <td> {{ fm.label_tag }} </td>
+                                    <td> {{ fm }}
+                                        <div style="color: red;"> {{ fm.errors|striptags }} </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td colspan="2" class="text-right">
+                                        <a href=" {% url 'terms' %} "> Terms & Conditions Page </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-right">
+                                        <!--a href="{% url 'login' %}" style="text-decoration: none;"> 
+                                            <input  type="button" value = "Login"  style  = "color: #1B1053 !important; font-variant: small-caps;"  class="btn  btn-outline-secondary btn-small small "/>
+                                        </a-->
+
+                                        <span
+                                            style="padding-top: 10px; padding-bottom: 10px; float: left; text-align:left; font-size: 15px;">If
+                                            you are already a member of Quiztainment<br>then click <a
+                                                href="{% url 'login' %}"
+                                                style="color: #14A43B; text-decoration: none;">Login</a>! </span>
+                                        <input type="submit" value="Register"
+                                            style="background-color: #14A43B; font-variant: small-caps;"
+                                            class="btn  text-white btn-small small " />
+
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                </tr>
+                            </table>
+
+                        </form>
+                    </div>
+
+                    <style>
+                        .vidstl {
+                            border: 3px solid;
+                            border-radius: 20px;
+                            box-shadow: 10px 20px #3333330f;
+                        }
+
+                        @media(max-width: 600px) {
+                            iframe {
+                                width: auto !important;
+                            }
+
+                            .detailsHead {
+                                margin-top: 50px !important;
+                            }
+
+                            .formRegister {
+                                padding: 30px !important;
+                            }
+
+                        }
+
+                        [type="checkbox"]:not(:checked),
+                        [type="checkbox"]:checked {
+                            position: relative !important;
+                            left: 0px !important;
+                        }
+                    </style>
+
+                    <div class="col-lg-5">
+                        <h2 class="py-3 detailsHead"> How To Play Quiz? </h2>
+                        <p>For details, watch the video.</p><br>
+
+                        <!--video  src=" {% static 'core/images/5th.mp4' %}" width = "100%" controls ></video-->
+                        <iframe class="vidstl" width="560" height="315" src="https://www.youtube.com/embed/dCG7qZo0S8o"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+
+                    </div>
+
+
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

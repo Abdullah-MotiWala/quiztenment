@@ -1,0 +1,509 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+
+
+
+  {% block user_dashboard_meta_extra %}
+  {% endblock user_dashboard_meta_extra %}
+
+
+  {% block user_dashboard_meta_html %}
+  {% include 'userdashboard/user_dashboard_meta_html.html' %}
+  {% endblock user_dashboard_meta_html %}
+
+
+
+  {% block user_dashbaord_title %}
+
+  <title> User Dashboard </title>
+
+
+  {% endblock user_dashbaord_title %}
+
+
+
+
+
+  {% block header_html_links %}
+  {% include 'userdashboard/header_html_links.html' %}
+
+  {% endblock header_html_links %}
+
+
+
+</head>
+
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <style>
+        .bg-slash-h {
+          background: linear-gradient(160deg, #FFFFFF 55%, #FFF3E5 45%);
+        }
+      </style>
+
+
+
+      {% block user_dashboard_side_menu %}
+      {% include 'userdashboard/user_dashboard_side_menu.html' %}
+
+      {% endblock user_dashboard_side_menu %}
+
+
+
+      {% block use_dashboard_top_navigation %}
+      {% include 'userdashboard/use_dashboard_top_navigation.html' %}
+
+      {% endblock use_dashboard_top_navigation %}
+
+
+
+
+
+
+      {% block use_dashboard_content %}
+
+
+
+
+
+      <!-- page content -->
+
+
+
+      <!-- page content -->
+
+
+
+      <div class="right_col" role="main">
+
+        <div class="row p-2 justify-content-around d-flex " style="">
+
+
+
+          <div class="col-md-3 col-sm-4    ">
+
+            <div class=" card py-4 shadow bg-slash-h   ">
+              <div class="row  ">
+
+                <div class="col-lg-8 col-md-8 col-sm-8 text-white " style="">
+                  <br>
+                  <h6 class="text-center text-dark "> User Satisfaction Rate </h6>
+                  <h3 class="text-center  " style="color:#FF9500; font-weight: 700;"> {{ user_satisfaction_rate }} </h3>
+
+
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 " style="">
+                  <img src="{% static 'core/images/TotalPlayed.png' %}" class="img-fluid px-1 mt-3" alt="">
+
+
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+          <div class="col-md-3 col-sm-4">
+            <div class=" card py-4 bg-slash-h  shadow ">
+              <div class="row  ">
+                <div class="col-lg-7 text-white " style="">
+                  <br>
+                  <h6 class="text-center text-dark ">User Growth Rate </h6>
+
+                  <h3 class="text-center " style="color:#FF9500; font-weight: 700;"> {{ user_growth_rate }} </h3>
+                </div>
+                <div class="col-lg-4">
+                  <img src="{% static 'core/images/TotalUsers.png' %}" class="img-fluid px-1 mt-3" alt="">
+
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+          <div class="col-md-3 col-sm-4">
+            <div class=" card py-4 bg-slash-h  shadow ">
+              <div class="row  ">
+                <div class="col-lg-7 text-white ">
+                  <br>
+                  <h6 class="text-center text-dark"> {{ next_segment }} </h6>
+                  <h3 class="text-center " style="color:#FF9500; font-weight: 700;"> </h3>
+                </div>
+                <div class="col-lg-4" style="">
+
+                  <img src="{% static 'core/images/TotalWinners.png' %}" class="img-fluid px-1 mt-3" alt="">
+
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="col-md-3 col-sm-4">
+            <a href="  {% url  'open_quiz'  %}  ">
+              <div class=" card py-4  shadow " style="background: linear-gradient(160deg, #FF9500 55%, #FF9F19 45%);">
+
+                <div class="row  ">
+                  <div class="col-lg-8 text-white ">
+                    <h3 class="text-center text-dark "> Play Quiz </h3>
+                    <h3 class="text-center " style="color:#FF9500; font-weight: 700;"> </h3>
+                  </div>
+                  <div class="col-lg-4">
+
+                    <i class=" text-white fa-5x fa fa-chevron-circle-right  " style="line-height: 90px ;"></i>
+
+
+
+                  </div>
+                </div>
+
+              </div>
+            </a>
+          </div>
+
+
+          <br>
+          <br>
+
+
+          <div class="col-lg-6  mt-3    " style="background-color: #D3D3D3	 ;">
+            <div class='card w-100  shadow  '>
+
+              <table class="table table-sm p-2  ">
+                <thead>
+                  <tr>
+                    <th colspan='2' style="border: none !important;"> Your Quiz History</th>
+                  </tr>
+
+                  <tr>
+                    <th colspan='' style=""> Rank</th>
+                    <th class=""> Quiz Name </th>
+                    <th class=""> Date </th>
+                    <th class="text-right"> Score | Time </th>
+                    <th class="text-right"> Score % </th>
+                    <th class="text-right"> Submitted At </th>
+                    <th class="text-right"> Status </th>
+
+
+                  </tr>
+
+                </thead>
+
+
+                {% if my_result %}
+                {% for i in my_result %}
+                <tbody>
+                  <tr>
+                    <td> {{ forloop.counter }} </td>
+                    <td> {{ i.quizopen.quiz_name }} </td>
+                    <td class=""> {{ i.quizstart.user_quiz_start_time }} </td>
+                    <td class="text-right"> {{ i.corrent_anwswer }} | {{ i.user_time_duration_actual }} </td>
+                    <td class="text-right"> {{ i.awnsers_percantage }} </td>
+                    <td class="text-right"> {{ i.submittedAt }} </td>
+                    <td class="text-right"> {{ i.marit_status }} </td>
+
+
+                  </tr>
+                </tbody>
+
+
+                {% endfor %}
+
+
+                {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </table>
+            </div>
+          </div>
+
+          <div class="col-lg-3  mt-3   ">
+            <div class="row">
+
+              <div class="col-lg-12">
+
+                <div class=" card py-4 shadow bg-slash-h   ">
+                  <div class="row  ">
+                    <div class="col-lg-11 col-md-7 col-sm-7 text-dark " style="">
+                      <h6 class=' text-center text-dark  '> &nbsp; YOUR PROFILE </h6>
+
+                    </div>
+
+
+                    <div class="col-lg-7 col-md-7 col-sm-7 text-dark  text-center " style="">
+
+                      <h6> {{ user_profile_records.username }} </h6>
+                      <table class='text-center w-100 '>
+                        <tr>
+                          <td class="text-dark  ">
+                            Joining Date : {{ user_profile_records.joining_date }}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-dark  ">
+                            Quiz Played : {{ user_profile_records.my_quiz_played_count }}
+                          </td>
+
+                        </tr>
+
+
+
+
+                      </table>
+
+                      <br>
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 " style="">
+                      <img src="{% static 'core/images/profile.png' %} " class='img-fluid px-2 ' alt=""
+                        style="width: 60px; height:60px; ">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <br>
+
+              <div class="col-lg-12">
+                <br>
+                <div class=" card  shadow">
+
+
+
+
+
+
+                  <table class="table table-sm   " style="border-top: none !important;">
+                    <thead>
+                      <tr style="border: none !important;">
+                        <th style="border: none !important;" colspan=''> &nbsp; &nbsp; &nbsp; NEW PLAYERS</th>
+                      </tr>
+                    </thead>
+                    {% if user_list %}
+                    {% for i in user_list %}
+
+
+                    <tbody>
+                      <tr>
+
+                        <td> &nbsp; &nbsp; &nbsp; {{ i.first_name }} </td>
+
+                      </tr>
+                    </tbody>
+                    {% endfor %}
+                    {% endif %}
+
+
+                  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  </table>
+
+
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+          <div class="col-lg-3  mt-3  ">
+            <div class='card w-100 py-3  shadow '>
+
+
+
+              <table class="table table-sm p-1 " style="border-top: none !important;">
+                <thead>
+                  <tr style="border: none !important;">
+                    <th style="border: none !important;" colspan='3'> LEADERBOARD </th>
+                  </tr>
+                  <tr>
+                    <th colspan='' style=""> Rank</th>
+                    <th class="text-center"> Name </th>
+                    <th class="text-right"> Score | Time </th>
+                    <!-- <th class="text-right"> Submitted At </th> -->
+                  </tr>
+                </thead>
+                {% if result %}
+                {% for i in result %}
+                <tbody>
+                  <tr>
+                    <td> {{ forloop.counter }} </td>
+                    <td> {{ i.users.username }} </td>
+                    <td class="text-right">
+                      {{ i.corrent_anwswer }} | {{ i.user_time_duration_actual }} </td>
+                    <!-- <td>{{i.creation}}</td> -->
+                  </tr>
+                </tbody>
+                {% endfor %}
+                {% endif %}
+
+              </table>
+
+
+
+
+            </div>
+          </div>
+
+
+
+
+
+
+        </div>
+
+        <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+      <!-- /page content -->
+
+
+
+
+      <!-- /page content -->
+
+
+      {% endblock use_dashboard_content %}
+
+
+
+      {% block use_dashboard_footer %}
+
+      {% endblock use_dashboard_footer %}
+    </div>
+  </div>
+
+
+  {% block footer_js_links %}
+  {% include 'userdashboard/footer_js_links.html' %}
+  {% endblock footer_js_links %}
+
+
+
+  {% block extra_footer_js_links %}
+  {% include 'userdashboard/extra_footer_js_links.html' %}
+  {% endblock extra_footer_js_links %}
+
+
+
+</body>
+
+</html>

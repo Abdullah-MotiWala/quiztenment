@@ -1,0 +1,272 @@
+{% load embed_video_tags %}
+{% load tawkto_tags %}
+
+{% load static %}
+
+<style>
+    @media (max-width: 768px){
+        
+        #home-our-links{
+            margin: -226px -15px 30px -55px !important;
+        }
+        
+        .promoVid{
+            height: 200px !important;
+        }
+        
+        .our-strength{
+            margin-top: 20px !important;
+        }
+        
+</style>
+        
+    
+    <!-- ==============================================
+    ** Banner Carousel **
+    =================================================== -->
+    <div class="banner-outer">
+        <div class="banner-slider">
+
+            
+
+            <div class="slide2">
+                <div class="container">
+                    <div class="content">
+                        <h1 class="animated fadeInUp">  Play & Win </h1>
+                        <p class="animated fadeInUp">
+                            
+                            {% if user.is_authenticated %}
+                            
+                            <a href="  {% url  'open_quiz'  %}  ">
+                            <Button class="btn btn-warning" style="font-weight:900"  > Play Game  </Button>
+                            </a>
+                            
+                            {% else  %}
+                            
+                            <a href=" {% url 'register' %} "> 
+                            <Button class="btn btn-warning" style="font-weight:900"  > Register  </Button>
+                            </a>
+                            
+                            {% endif %}
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <!-- ==============================================
+    ** About **
+    =================================================== -->
+    <section class="about">
+        <div class="container">
+            <ul class="row our-links" id="home-our-links">
+                <li class="col-sm-4 apply-online clearfix equal-hight">
+                    <div class="icon"><img src=" {% static 'core/images/apply-online-ico.png' %}" class="img-responsive" alt=""></div>
+                    <div class="detail">
+                        <h3>Enhanced Knowledge</h3>
+                        <p>Giving you a chance to level up your wisdom.</p>
+                    </div>
+                </li>
+                <li class="col-sm-4 prospects clearfix equal-hight">
+                    <div class="icon"><img src="{% static  'core/images/prospects-ico.png' %} " class="img-responsive" alt=""></div>
+                    <div class="detail">
+                        <h3> Participate and Win </h3>
+                        <p> Sign up for Rs 250 and get a chance to win exciting prizes. </p>
+                         <a href=" {% url 'login' %} " class="more">   <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    </div>
+                </li>
+                <li class="col-sm-4 certification clearfix equal-hight">
+                    <div class="icon"><img src="{% static  'core/images/prospects-ico.png' %} " class="img-responsive" alt=""></div>
+                    <div class="detail">
+                        <h3> Challenges Every Day! </h3>
+                        <p>  Meet new people while proving your intelligence </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7 col-sm-push-5 left-block"> <span class="sm-head">
+                    Double the Fun </span>
+                    <h2> Learn and Earn      </h2>
+                    <p style="font-size: 15px;color:#757575;">
+                        We’re giving away prizes every month!
+                    </p>
+                    <p style="font-size: 15px;color:#757575;">
+                        Quiztainment is a simple and fast quiz game for everyone. It’s a platform providing individuals with the chance of earning real prizes. 
+                        Our mission is to spread knowledge in a playful way while encouraging you to learn more. 
+                        <br>
+                        Every question we have in our quiz is unique – challenging your mind to think differently. To be in with a chance of winning, simply play the game and get 60% of the questions right. 
+                        Outstanding contestants will be contacted, and there will be a brand new set of prizes each month. 
+                        The list of prizes we’re giving away includes cash, mobile phone, laptop, car, and many more. 
+                        
+
+                    </p>
+                </div>
+                <div class="col-sm-5 col-sm-pull-7">
+                    <div class="video-block">
+                        <div id="thumbnail_container"> <img src=" {% static  'core/images/about-video.jpg' %}" id="thumbnail" class="img-responsive" alt=""> </div>
+                        <a href="https://www.youtube.com/watch?v=i11RXCJVEnw" class="start-video video"><img src="images/play-btn.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================================
+    ** Our Cources **
+    =================================================== -->
+    <section class="our-cources padding-lg">
+        <div class="container">
+            <h2 style="padding-bottom: 0px !important;"> TEST YOUR KNOWLEDGE & COMPETE TO WIN FABULOUS PRIZES  </h2>
+        </div>
+    </section>
+
+    <!-- ==============================================
+    ** Our Importance **
+    =================================================== -->
+    <section class="our-impotance padding-lg">
+        <div class="container">
+            <ul class="row" style="margin-left: -55px !important;">
+                <li class="col-sm-4 equal-hight">
+                    <div class="inner"> 
+                        <img src=" {% static 'core/images/studyIcon.png' %} "
+                        style="width:56px; height:56px"
+                        alt="Malleable Study Time">
+                        <h3> MALLEABLE STUDY TIME </h3>
+                        <p style="font-size: 15px;color:#757575;"> You can easily prepare for the quiz through online material. All you need to do is, study in your free time while maintaining a perfect life balance.   </p>
+                    </div>
+                </li>
+                <li class="col-sm-4 equal-hight">
+                    <div class="inner"> 
+                        <i class=" fa-4x fa fa-rocket text-success " aria-hidden="true"></i>
+
+                        <h3> BOOSTING INTELLIGENCE  </h3>
+                        <p style="font-size: 15px;color:#757575;">
+                            With the help of our quizzes, we enhance your vocabulary and language skills along with IQ level.
+                        
+                        </p>
+                    </div>
+                </li>
+                <li class="col-sm-4 equal-hight">
+                    
+                    <div class="inner"> 
+
+                        <i class="  fa-4x fa fa-plus-square-o text-success " aria-hidden="true"></i>
+
+
+                         <h3> EASY TO ACCESS  </h3>
+                        <p style="font-size: 15px;color:#757575;">  Our quizzes are easily accessible – just sign up for Rs 250 and guess the correct answer to beat the competition </p>
+                    </div>
+
+
+                    
+
+                </li>
+                <li class="col-sm-4 equal-hight">
+                    <div class="inner"> 
+                    <i class=" fa-4x  text-success fa fa-graduation-cap" aria-hidden="true"></i>
+
+                        <h3> STUDY ON THE GO  </h3>
+                        <p style="font-size: 15px;color:#757575;"> The quizzes are easily accessible on several devices, including mobile phones, Ipads, computers and other devices.  </p>
+                    </div>
+                </li>
+                <li class="col-sm-4 equal-hight">
+                    <div class="inner"> 
+                    
+                    <i class=" fa-4x  text-success fa fa-delicious" aria-hidden="true"></i>
+
+
+                    
+                        <h3> IN-DEPTH TRANSITION  </h3>
+                        <p style="font-size: 15px;color:#757575;"> 
+                            We provide an environment of learning with multiple sources of learning such as textbooks and power-point presentations.
+                        </p>
+                    </div>
+                </li>
+                <li class="col-sm-4 equal-hight">
+                    
+                    
+                 <div class="inner"> 
+
+
+                    <i class=" fa-4x  text-success fa fa-hand-o-up" aria-hidden="true"></i>
+
+
+
+                    
+                    
+                        <h3> INTERACTIVE PARTICIPATION </h3>
+                        <p style="font-size: 15px;color:#757575;"> Whether you want to test your knowledge or attempt it for fun, our quizzes are designed to be dynamic and enjoyable.   </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ==============================================
+    ** How Study **
+    =================================================== -->
+    <section class="how-study padding-lg">
+        <div class="container">
+            <h2> <span>  GET YOUR BRAIN IN GEAR FOR THE   </span>  LITTLE MIND PLAY! </h2>
+            <ul class="row" style="margin-left: -55px !important; list-style: none !important;">
+                <li class="col-sm-12 col-12">
+                    <div>                        
+
+                        {% load embed_video_tags %}
+
+                        <!-- The video tag: -->
+                        {% video video.video as my_video %}
+                          URL: {{ my_video.url }}
+                          Thumbnail: {{ my_video.thumbnail }}
+                          Backend: {{ my_video.backend }}
+                        
+                          {% video my_video "large" %}
+                        {% endvideo %}
+                        
+
+
+
+
+                    </div>
+                    
+                    <iframe class="promoVid" width="100%" height="600px" src="https://www.youtube.com/embed/g_M8_ubNPs4?wmode=opaque" loading="lazy" frameborder="0" allowfullscreen=""></iframe>
+
+                </li>
+
+
+
+            </ul>
+        </div>
+    </section>
+
+    <!-- ==============================================
+    ** Why Choose **
+    =================================================== -->
+    <section class="why-choose padding-lg">
+        <div class="container">
+            <h2><span style="font-size: 40px;">The Numbers Say it All</span>Why Choose Us</h2>
+            <ul class="our-strength" style="margin-left: -55px !important;">
+                <!--<li>-->
+                <!--    <div class="icon"><span class="icon-certification-icon"> </span></div>-->
+                <!--    <span class="counter"> {{ winner_count }} </span>-->
+                <!--    <div class="title">WINNERS</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--    <div class="icon"><span class="icon-student-icon"></span></div>-->
+                <!--    <span class="counter"> 10,667 </span>-->
+                <!--    <div class="title">PLAYED </div>-->
+                <!--</li>-->
+                <li>
+                    <div class="icon"><span class="icon-parents-icon"></span></div>
+                    <div class="couter-outer"><span class="counter"> {{ user_count }} </span></div>
+                    <div class="title">Users </div>
+                </li>
+            </ul>
+        </div>
+    </section>

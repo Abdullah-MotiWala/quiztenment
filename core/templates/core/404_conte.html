@@ -1,0 +1,47 @@
+{% load static %}
+
+<style>
+
+    
+
+    .main-heading{
+        font-size: 200px;
+    }
+    
+
+@media screen and (max-width: 767px){
+    .img404{
+        width:370px;
+        padding-top: 40px;
+    }
+    
+
+    
+}
+
+
+
+</style>
+
+<div style="padding: 80px 10px 80px 10px;" class="container">
+    <div class="row h-100 justify-content-center align-items-center">
+
+        <div class="col-md-6">
+            <center>
+                <h1 class="main-heading" style="color: green;">404</h1><br>
+                <h2 style="font-size:50px">Page not found</h2><br>
+                <P style="font-size:20px">Sorry, we can't seem to find the page you're looking for. Try going back to the previous page or <b> <a style= "color:green;" href="{% url 'contact'  %}" >Contact Us</a></b> for more information.</p><br>
+                <a class="btn btn-warning" href="{% url 'home'  %}" >Go Back to Home</a>
+            </center>
+        </div>
+
+        <div style="padding-top: 0px; padding-left: 1px; padding-right: 10px;" class="col-md-6">
+            <!--div style="box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.22);" class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dCG7qZo0S8o" allowfullscreen></iframe>
+            </div-->
+            
+            <img class="img404" src = "{%  static 'core/images/Error404.png' %}">
+        </div>
+
+    </div>
+</div>

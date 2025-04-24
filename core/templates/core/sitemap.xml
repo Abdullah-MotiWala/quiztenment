@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://quiztainment.com.pk/</loc>
+  <lastmod>2022-09-01T06:52:31+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://quiztainment.com.pk/register</loc>
+  <lastmod>2022-09-01T06:52:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://quiztainment.com.pk/blog</loc>
+  <lastmod>2022-09-01T06:52:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://quiztainment.com.pk/faq</loc>
+  <lastmod>2022-09-01T06:52:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://quiztainment.com.pk/policy</loc>
+  <lastmod>2022-09-01T06:52:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://quiztainment.com.pk/terms</loc>
+  <lastmod>2022-09-01T06:52:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://quiztainment.com.pk/about</loc>
+  <lastmod>2022-09-01T06:52:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://quiztainment.com.pk/open_quiz_list</loc>
+  <lastmod>2022-09-01T06:52:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://quiztainment.com.pk/score_board</loc>
+  <lastmod>2022-09-01T06:52:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://quiztainment.com.pk/contact</loc>
+  <lastmod>2022-09-01T06:52:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://quiztainment.com.pk/login</loc>
+  <lastmod>2022-09-01T06:52:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>

@@ -1,0 +1,161 @@
+
+{% extends "core/base.html" %}
+
+{% load static %}
+{% load embed_video_tags %}
+
+
+{% block title %}
+<title>Quiztainment-Contact-US</title>
+{% endblock title %}
+
+{% block extra_header_meta_tag %}
+<meta name="title" content="Contact Us: | Quiztainment"> 
+<meta name="description" content="We have thousands of GK quizzes and tests online at Quiztainment. To learn through real-time testing, Simply Login/ Register the desired information link....">
+{% endblock extra_header_meta_tag %}   
+
+
+
+
+
+
+{% block content %}
+
+
+
+    
+  
+
+
+
+    <!-- ==============================================
+    ** Inner Banner **
+    =================================================== -->
+    <div class="inner-banner contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-lg-9">
+                    <div class="content">
+                        <h1>Contact Us</h1>
+                        <p> Please Contact Us for your Any Query</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ==============================================
+    ** Contact Us **
+    =================================================== -->
+    <section class="form-wrapper padding-lg">
+        <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-12">
+  
+                      {% if messages %}
+                      {% for message in messages %}
+                          {% if message.tags %}
+                          <div class="alert alert-{{ message.tags }} alert-dismissible " role="alert" style="background-color:  #14A43B; color:white "  "  >
+                            <button type="button " class="close p-0 btn  btn-sm  text-white  h-100 " data-dismiss="alert" aria-label="Close">
+                              <a class="close-link"><i class="fa fa-close"></i></a>
+                            </button>
+                            <strong>{{ message.tags }}!</strong> {{ message }}
+                            </div>
+  
+                          {% endif %}
+                      {% endfor %}
+                  {% endif %}
+
+
+
+
+            <form name="contact-form" id="ContactForm" method="POST">
+                {% csrf_token %}
+                <div class="row input-row">
+                    <div class="col-sm-6">
+                        <input name="first_name" type="text" placeholder="Your Name" required >
+                    </div>
+                    <div class="col-sm-6">
+                        <input name="email" type="email" placeholder="Enter Your Email" required >
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col-sm-6">
+                        <input name="phone" type="number" placeholder="Enter Your Phone" required >
+                    </div>
+                    <div class="col-sm-6">
+                        <input name="subject" type="text" placeholder="Enter Your Subject"  required  >
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col-sm-12">
+                        <textarea placeholder="Enter Your Message Here" name="business_text" id="" cols="30" rows="10" required ></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button  type="submit" class="btn">Send Message <span class="icon-more-icon"></span></button>
+                        <div class="msg"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==============================================
+    ** Google Map **
+    =================================================== -->
+    <section class="google-map">
+        <div id="map">
+            
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14473.510189907991!2d67.0915807!3d24.9192051!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1749773815f15a7d!2sQuiztainment!5e0!3m2!1sen!2s!4v1662014011310!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        
+        </div>
+        <div class="container">
+            <div class="contact-detail">
+                <div class="address">
+                    <div class="inner">
+                        <h3> Quiztainment </h3>
+                        <p> 
+                            ALI CENTER, Suite B-07, Block 13 C Gulshan-e-Iqbal, Karachi, Karachi City, Sindh 75300, Pakistan    
+                        </p>
+                    </div>
+                    <div class="inner">
+                        <h3> +92 324 1237566 </h3>
+                    </div>
+                    <div class="inner"> <a href="mailto:info@quiztainment.com.pk"> info@quiztainment.com.pk </a> </div>
+                </div>
+                <div class="contact-bottom">
+                    <ul class="follow-us clearfix">
+                        <li><a href="https://www.facebook.com/quiztainmentpak"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UC14RPc5q8OKMxT_bGMTrX6g"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.instagram.com/quiztainment/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================================
+    ** Have Questions? **
+    =================================================== -->
+    <section class="our-impotance have-question padding-lg">
+        <div class="container">
+            <h2>Still have questions?</h2>
+            <h2>   Send an email   </h2>
+
+            <br>
+
+
+            
+        </div>
+    </section>
+    
+
+
+
+    {% endblock content %}

@@ -1,0 +1,307 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+
+
+
+    {% block user_dashboard_meta_html %}
+
+    {% include 'userdashboard/user_dashboard_meta_html.html' %} 
+    
+    {% endblock user_dashboard_meta_html %}
+
+    {% block user_dashboard_meta_extra %}
+    {% include 'userdashboard/user_dashboard_meta_extra.html' %} 
+    {% endblock user_dashboard_meta_extra %}
+
+
+
+    
+    {% block user_dashbaord_title %}
+      
+    <title> User Quiz Start  </title>
+
+
+    {% endblock user_dashbaord_title %}
+      
+        
+
+
+    
+    {% block header_html_links %}
+    {% include 'userdashboard/header_html_links.html' %}
+      
+    {% endblock header_html_links %}
+      
+
+
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+
+
+        
+        {% block user_dashboard_side_menu %}
+        {% include 'userdashboard/user_dashboard_side_menu.html' %}
+          
+        {% endblock user_dashboard_side_menu %}
+          
+
+
+        {% block use_dashboard_top_navigation %}
+        {% include 'userdashboard/use_dashboard_top_navigation.html' %}
+          
+        {% endblock use_dashboard_top_navigation %}
+          
+
+
+
+
+
+        {% block use_dashboard_content %}
+          
+
+
+
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <!-- top tiles Heading  -->
+          <div class="row" style="display: inline-block;" >
+          <div class="tile_count">
+
+          </div>
+        </div>
+          <!-- /top tiles Heading -->
+
+
+
+          <!-- Main Content row  -->
+
+          <div class="row justify-content-around d-flex  ">
+            <div class="col-md-12 col-sm-12    ">
+              <div class="dashboard_graph">
+
+                <div class="row x_title">
+                  <div class="col-md-8">
+                    <h3>   Detail    
+                    </h3>
+                  </div>
+
+                  <div class="col-md-4">
+                    <h3 class="text-right" >  
+                      <button class="btn btn-success  " style="color:white !important" >  <b id="hms_timer"></b>   </button>  
+                           
+                      </h3>
+                  </div>
+
+
+                </div>
+
+
+
+                <div class="row">
+                  <div class="col-lg-12">
+
+                    {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible " role="alert">
+                          <button type="button " class="close p-0 btn  btn-sm  text-white  h-100 " data-dismiss="alert" aria-label="Close">
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                          </button>
+                          <strong>{{ message.tags }}!</strong> {{ message }}
+                          </div>
+
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+
+
+                  </div>
+                </div>
+
+                <div class="row  ">
+
+                    <div class="col-md-12 col-sm-12 col-lg-12 card  shadow ">
+                      <h1> Start Your Quiz </h1>
+
+
+                      
+                      {% if start_quiz_status == 1 %}
+                      <div>
+                        {% if messages %}
+                        {% for message in messages %}
+                            {% if message.tags %}
+                            <div class="alert alert-{{ message.tags }}">
+                                <strong>  {{ message.tags }} !</strong> {{ message }}.
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                      </div>
+                      <p> 
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="text" name="quiz_id" value="{{ quiz_id }}" >
+                            <button type="submit"  class="btn btn-primary" > QUIZ START SESSION </button> 
+                        </form>
+                    </p>
+
+
+                    {% elif  start_quiz_status == 3 %}
+                    <p> 
+                      <div class="row">
+                        <div class="col-lg-7">
+                          <table class = 'table table-sm' >
+
+                            <tr>
+                              <td> 
+                                <button class="btn btn-secondary" > Start Date & Time  </button>   </td>
+                              <td> 
+                                <button class="btn btn-primary" >   {{  quiz_time.user_quiz_start_time|date:"d-m-Y h:i a "  }}    </button>                               
+                              </td>
+                            </tr>
+                            <tr>
+                              <td> 
+                                <button class="btn btn-secondary" >   End Date & Time  </button>  </td>
+                              <td> 
+                                <button class="btn btn-primary" > {{ quiz_time.user_quiz_end_time|date:"d-m-Y  h:i a "  }}   </button>                             
+                              </td>
+                            </tr>
+
+                            
+                          </table>
+                        </div>
+                      </div>
+
+                        <style>
+                            @media(max-width: 767px){
+                                .playBtn{
+                                    width: 100% !important;
+                                }
+                            }
+                        </style>
+
+                      <form action=" {% url 'attempt_quiz' user_questions_1  %}" method="POST">
+                          {% csrf_token %}
+                          <button type="submit"  class="btn btn-primary playBtn" > Play </button> 
+                      </form>
+                    </p>
+                    {% elif  start_quiz_status == 4 %}
+                  
+                    <p> 
+                      <form action=" {% url 'attempt_quiz' user_questions_1  %}" method="POST">
+                          {% csrf_token %}
+                          <button type="submit"  class="btn btn-primary playBtn" > Resume Play  </button> 
+                      </form> 
+                    </p>
+                  
+
+
+
+                      {% endif %}
+                        
+ 
+
+
+                   
+
+
+
+                    </div>
+    
+                    <div>
+    
+  
+    
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+                    
+                    
+
+
+
+          </div>
+          <br />
+
+          <div class="row">
+            <div class="col-lg-12"> 
+              <h4> Important Note : </h4>
+              <p>
+
+                <ol>
+                  <li>
+                    Once you have started attempting the quiz, you cannot stop it midway through.
+
+                  </li>
+                  <li>
+                    You cannot go back to try to answer the questions that you left.
+
+                  </li>
+                  <li>
+                    In case of loss of internet you may refresh the page within minutes to resume quiz whereafter you need to pay afresh to start over
+                    
+                  </li>
+
+                </ol>
+              </p>
+
+            </div>
+          </div>
+
+          <!-- /Main Content row  -->
+
+
+
+
+
+          <script type="text/javascript">
+            $('#hms_timer').countdowntimer({
+                hours :   {{ quiz_time.duration_hour }} ,
+                minutes : {{ quiz_time.duration_mintues }},
+                seconds :  {{ quiz_time.duration_seconds }},
+                size : "lg",
+            });
+            
+
+     </script>
+
+
+        </div>
+        <!-- /page content -->
+
+
+        {% endblock use_dashboard_content %}
+
+
+        
+        {% block use_dashboard_footer %}
+     
+        {% endblock use_dashboard_footer %}
+      </div>
+    </div>
+
+    
+    {% block footer_js_links %}
+    {% include 'userdashboard/footer_js_links.html' %}      
+    {% endblock footer_js_links %}
+
+
+
+    {% block extra_footer_js_links %}
+    {% include 'userdashboard/extra_footer_js_links.html' %}      
+    {% endblock extra_footer_js_links %}
+
+
+
+
+	
+  </body>
+</html>

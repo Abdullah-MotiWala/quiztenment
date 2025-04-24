@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    {% block user_dashboard_meta_html %}
+
+    {% include 'userdashboard/user_dashboard_meta_html.html' %} 
+
+
+
+    
+    {% endblock user_dashboard_meta_html %}
+
+
+    
+    {% block user_dashbaord_title %}
+      
+
+
+    <title> Played List  </title>
+
+
+    {% endblock user_dashbaord_title %}
+      
+        
+
+
+    
+    {% block header_html_links %}
+    {% include 'userdashboard/header_html_links.html' %}
+      
+    {% endblock header_html_links %}
+      
+
+
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+
+
+        
+        {% block user_dashboard_side_menu %}
+        {% include 'userdashboard/user_dashboard_side_menu.html' %}
+          
+        {% endblock user_dashboard_side_menu %}
+          
+
+
+        {% block use_dashboard_top_navigation %}
+        {% include 'userdashboard/use_dashboard_top_navigation.html' %}
+          
+        {% endblock use_dashboard_top_navigation %}
+          
+
+
+
+
+
+        {% block use_dashboard_content %}
+          
+          
+
+
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <!-- top tiles Heading  -->
+          <div class="row" style="display: inline-block;" >
+          <div class="tile_count">
+            <div class="col-md-12 col-sm-12  tile_stats_count">
+              <h5> Player History </h5>
+            </div>
+
+          </div>
+        </div>
+          <!-- /top tiles Heading -->
+
+
+          <!-- Main Content row  -->
+
+
+        <div class="row">
+
+
+            <div class="col-lg-12">
+                <table class = 'table table-sm shadow '>
+                    <thead>
+                        <tr>
+                            <th> Quiz Name  </th>
+                            <th>  Date </th>
+                            <th> Assigned </th>
+                            <th> Correct  </th>
+                            <th> Skipped  </th>
+                            <th> Durations </th>
+                        </tr>
+                    </thead>
+    
+
+
+          
+          {% if result %}                      
+          <tbody>
+
+          {% for i in result  %}
+                    <tr>
+                        <td> {{ i.quizopen.quiz_name  }} </td>
+                        <td>  {{ i.quizstart.user_quiz_start_time  }} </td>
+                        <td> {{ i.total_assigned_answer  }} </td>
+                        <td> {{ i.corrent_anwswer  }} </td>
+                        <td> {{ i.skipped_anwswer  }} </td>
+                        <td> 
+
+                          {{ i.user_time_duration_actual }}
+
+
+                        </td>
+                    </tr>
+
+
+         
+          
+          {% endfor %}
+
+          
+          <tr>
+            <td colspan="7" class="text-right"> 
+                <article aria-label="Page navigation example">
+                    <ul class="pagination m-0" style="margin:0px"  >
+                        {% if result.has_previous %}
+                        <li class="page-item btn btn-sm btn-secondary ">  <a  style="color:white" href="?page={{result.previous_page_number}}">Previous</a> </li>
+                       {% endif %}
+                        <li class="page-item"><a class="page-link" href="#">  {{ result.number }}   </a></li>
+                       {% if result.has_next %}
+                       <li class="page-item "   >  <a class="page-link" href="?page={{result.next_page_number}}"   >Next</a></li>
+                       {% endif %}
+
+                    </ul>
+                  </article>
+            </td>
+        </tr>
+
+
+
+
+
+          {% endif  %}
+        </tbody>
+
+        </table>
+
+    </div>
+
+
+
+
+        </div>
+
+
+          <!-- /Main Content row  -->
+
+
+
+
+
+        </div>
+        <!-- /page content -->
+
+
+        {% endblock use_dashboard_content %}
+
+
+        
+        {% block use_dashboard_footer %}
+     
+        {% endblock use_dashboard_footer %}
+      </div>
+    </div>
+
+    
+    {% block footer_js_links %}
+    {% include 'userdashboard/footer_js_links.html' %}      
+    {% endblock footer_js_links %}
+
+
+
+    {% block extra_footer_js_links %}
+    {% include 'userdashboard/extra_footer_js_links.html' %}      
+    {% endblock extra_footer_js_links %}
+
+
+	
+  </body>
+</html>

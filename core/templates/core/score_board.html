@@ -1,0 +1,163 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+
+{% block title %}
+<title>Quiztainment-Score Board </title>
+{% endblock title %}
+
+
+
+
+{% block content %}
+
+
+
+
+<div class="container">
+
+<br>
+
+  <div class="row">
+
+    <div class="col-lg-12"> 
+      <div class="card shadow  border border-success    "> 
+        <h4 style = 'color:green; font-weight:900; text-align:center'>    STAY TUNED. WILL RESUME SHORTLY     </h4>
+        <br>
+      
+      </div>
+      </div>
+
+
+    <div class="col-lg-6"> 
+      <div class="card shadow  border border-success    ">
+
+
+
+          <table class="table table-sm p-2  " style = 'color:black'  > 
+            <thead>
+            <tr>
+                <th colspan = '2' style="border: none !important;"  > Your Quiz History</th>
+                <th class="text-right" style="border: none !important;  "   >  </th>
+            </tr>
+            <tr>
+                <th colspan = '' style=""  > SN # </th>
+                <th class=""> Quiz Name    </th>
+                <th class="text-right"  >  Score     </th>
+                <th class="text-right"  >  Time     </th>
+                <th class="text-right"  >  Score %     </th>
+                <th class="text-right"  >  Submitted At     </th>
+                <th class="text-right"  >  Result      </th>
+
+
+              </tr>
+        </thead>
+        {% if  my_result %}
+        {% for i in  my_result %}
+        <tbody>
+            <tr>
+                <td>  {{ forloop.counter  }}  </td> 
+                <td> {{ i.quizopen.quiz_name }} </td>  
+                <td class="text-right"  >  {{ i.corrent_anwswer }}     </td>
+                <td class="text-right"  >  {{ i.user_time_duration_actual }}     </td>
+                <td class="text-right"  >   {{ i.awnsers_percantage }}     </td>
+                <td class="text-right"  >   {{ i.creation }}     </td>
+                <td class="text-right"  >  {{ i.final_score }}      </td>
+
+
+              </tr>
+      </tbody>
+        {% endfor %}
+        {% else %}
+        <tbody>
+          <tr>
+            <td colspan="7" class = ' py-2 text-center bg-success text-white' >  You have not Participated yet  </td> 
+
+          </tr>
+    </tbody>
+      
+          
+        {% endif %}
+
+    </table>
+
+
+      
+    </div>
+    </div>
+    <div class="col-lg-6"> 
+
+
+      <div class =  'card w-100 py-3  shadow ' 
+      
+      style="overflow: auto; height : 680px;"
+
+      > 
+
+
+
+        <table class="table table-dark  table-sm p-2  " style="border-top: none !important; color:black"  > 
+            <thead>
+            <tr style="border: none !important;" >
+                <th style="border: none !important;"  colspan = '3' > LEADERBOARD </th>
+            </tr>
+            <tr>
+                <th colspan = '' style=""  > Rank</th>
+                <th class=""> Contestant     </th>
+                <th class="text-right"  >  Score     </th>
+                <th class="text-right"  >  Time     </th>
+                <th class="text-right"  >  Score %     </th>
+                <th class="text-right"  >  Submitted At %     </th>
+
+
+              </tr>
+        </thead>
+        {% if  result %}
+        {% for i in result %}
+        <tbody>
+            <tr>
+                <td>  {{ forloop.counter  }}  </td> 
+                <td> {{ i.users.username }} </td>  
+                <td class="text-right"  >  {{ i.corrent_anwswer }}     </td>
+                <td class="text-right"  >  {{ i.user_time_duration_actual }}     </td>
+                <td class="text-right"  >   {{ i.awnsers_percantage }}     </td>
+                <td class="text-right"  >   {{ i.creation }}     </td>
+
+            </tr>
+      </tbody>
+        {% endfor %}
+        {% endif %}
+          
+
+
+
+      </table>
+
+
+
+
+    </div>
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+    
+</div>
+
+
+
+
+
+
+
+
+{% endblock content %}
+    
+  

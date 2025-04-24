@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+
+    {% block user_dashboard_meta_html %}
+
+    {% include 'userdashboard/user_dashboard_meta_html.html' %} 
+
+
+
+    
+    {% endblock user_dashboard_meta_html %}
+
+
+    
+    {% block user_dashbaord_title %}
+      
+    <title> Quiz Payment  </title>
+
+
+    {% endblock user_dashbaord_title %}
+      
+        
+
+
+    
+    {% block header_html_links %}
+    {% include 'userdashboard/header_html_links.html' %}
+      
+    {% endblock header_html_links %}
+      
+
+
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+
+
+        
+        {% block user_dashboard_side_menu %}
+        {% include 'userdashboard/user_dashboard_side_menu.html' %}
+          
+        {% endblock user_dashboard_side_menu %}
+          
+
+
+        {% block use_dashboard_top_navigation %}
+        {% include 'userdashboard/use_dashboard_top_navigation.html' %}
+          
+        {% endblock use_dashboard_top_navigation %}
+          
+
+
+
+
+
+        {% block use_dashboard_content %}
+          
+          
+
+
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <!-- top tiles Heading  -->
+          <div class="row" style="display: inline-block;" >
+          <div class="tile_count">
+
+            {{  q.payment_link_generated }}
+            {{ payment_link_generated }}
+
+
+          </div>
+        </div>
+          <!-- /top tiles Heading -->
+
+
+          <!-- Main Content row  -->
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 ">
+              <div class="dashboard_graph">
+                <div class="row x_title">
+                  <div class="col-md-12 col-lg-12 col-sm-12   ">
+                    <h3> Paid Payment </h3>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12 col-lg-6   ">
+                  <div class="card p-3 ">
+                    <div> 
+                      <h1> 
+                        {{ quiz_name  }}
+                    </h1>
+                    </div>
+
+                   
+                      <a href="{{ link }}" target="_blank" style="text-decoration: none; color:white" id = 'payment_button_click()'   >      
+                        <button class="btn btn-primary text-white w-100  " > 
+                        PAYMENT  
+                      </button> </a>
+
+                      <script>
+                        function payment_button_click(){
+                          window.location.replace("https://quiztainment.com.pk/user/open_quiz");
+                        }
+
+                      </script>
+
+
+                  </div>
+                </div>
+
+                <div class = 'class="col-md-6 col-sm-12 col-lg-6   '> 
+
+                  <div class="card p-3 ">
+                    <img width="100%" class="img-fluid"
+                    src="{% static 'core/images/Banner-Quiztainment-thumbnail2.jpg' %}" alt="">
+  
+                  </div>
+
+                </div>
+
+
+
+                
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+          </div>
+          <br />
+
+          <!-- /Main Content row  -->
+
+
+
+
+
+        </div>
+        <!-- /page content -->
+
+
+        {% endblock use_dashboard_content %}
+
+
+        
+        {% block use_dashboard_footer %}
+     
+        {% endblock use_dashboard_footer %}
+      </div>
+    </div>
+
+    
+    {% block footer_js_links %}
+    {% include 'userdashboard/footer_js_links.html' %}      
+    {% endblock footer_js_links %}
+
+
+
+    {% block extra_footer_js_links %}
+    {% include 'userdashboard/extra_footer_js_links.html' %}      
+    {% endblock extra_footer_js_links %}
+
+
+    <script>
+      console.log(" --  Befor  setInterval  ") 
+
+  var before=(new Date()).getMinutes();
+    setInterval(function() {
+      console.log(" -- setInterval ")
+    if((new Date()).getMinutes()-before >= 1){
+      history.back()
+
+  }
+    }, 1000);//compare each second
+
+
+</script>
+
+
+
+  </body>
+</html>

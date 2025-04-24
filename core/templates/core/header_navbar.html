@@ -1,0 +1,58 @@
+{% load static %}
+
+<style>
+
+    @media(min-width: 768px){
+        .navbar-collapse.collapse{
+            display: flex !important;
+            justify-content: center;
+        }
+    }
+   
+    
+</style>
+
+<!-- Start Navigation -->
+<nav class="navbar navbar-inverse">
+<div class="container">
+    <div class="navbar-header">
+        <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">                    
+        <ul class="nav navbar-nav">
+            <li ><a href="{% url  'home'  %}"> Home </a></li>
+            <li> <a href="{% url  'score_board'  %}">Main Leaderboard </a></li>
+            <!-- <li> <a href="{% url  'free_score_board'  %}">Temp Leaderboard</a></li> -->
+           
+            <li> <a href="{% url 'about' %}">About us</a></li>
+            
+            <!--li> <a href=" {% url  'faq'  %} ">FAQS</a></li-->
+           
+            <!--li> <a href="{% url  'contact'  %}">Contact Us</a></li-->
+
+
+            {% if user.is_authenticated %}
+            <!--li> <a href="{% url  'user_dashboard'  %}"> Dashboard </a></li-->
+            <li> <a href="{% url  'user_dashboard'  %}"> Profile </a></li>
+            <li> <a href=" {% url  'logout' %} ">Logout</a></li>
+
+            {% else  %}
+            <li> <a href=" {% url  'login' %} ">Login</a></li>
+            <li> <a href=" {% url  'register'  %} ">Register</a></li>
+
+              
+            {% endif %}
+
+
+
+
+
+        </ul>
+    </div>
+</div>
+</nav>
+<!-- End Navigation -->
+
+
+
+

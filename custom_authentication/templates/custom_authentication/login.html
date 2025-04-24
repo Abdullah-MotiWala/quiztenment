@@ -1,0 +1,87 @@
+
+{% extends "core/site_base.html" %}
+{% load  static %}
+
+{% block slider_section %}
+{% endblock slider_section %}
+	
+
+    {% block main_content %}
+
+
+
+    <div class="container"> 
+
+    <div class="row justify-content-around   py-5  "> 
+        <div class="col-lg-12 col-md-12  col-sm-12 col-12">
+            <div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="col-md-6 col-lg-6 col-sm-12">
+            <div class="card  p-4 " > 
+
+            <h4 class="text-center  bg-white  " style="color:  #1B1053; font-variant: small-caps; font-weight: 900; "   > User Signup Form</h4>
+
+
+            
+            <form action="" method="POST" novalidate>
+
+
+                {% csrf_token %}
+                <table class="table table-sm small p-0 m-0" >
+                {% for fm in form %}
+                <tr>
+                    <td>  {{ fm.label_tag }}  </td>
+                    <td>  {{ fm }}  
+                        <div style="color: red;" >  {{ fm.errors|striptags  }} </div>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                <tr>
+                    <td colspan="2" class="text-right" > 
+                        <input  type="submit" value = "Login"  style  = "background-color: #1B1053; font-variant: small-caps;"  class="btn  text-white btn-small small "/>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="small"> 
+                        {% if messages %}
+                            {% for message in messages %}
+                                {% if message.tags %}
+                                <div class="alert alert-{{ message.tag }}">
+                                    <strong>  {{ message.tags }} !</strong> {{ message }}.
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+
+            </form>
+
+            
+        </div>
+
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+    {% endblock main_content %}

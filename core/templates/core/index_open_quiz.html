@@ -1,0 +1,111 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container  " style="padding-top: 20px; padding-bottom:20px ;" >
+
+    <div class="row py-5 "  style="padding-top: 20px; padding-bottom:20px ;" >
+        <div class="col-lg-12 py-4 ">
+            <h3> Available Quiz Programs </h3>
+        </div>
+    </div>
+
+
+
+    <div class="row"  style="padding-top: 20px; padding-bottom:20px ;"  >
+
+
+
+
+
+
+        {% if quiz_open %}                      
+        {% for i in quiz_open  %}
+
+        <div class="col-sm-3" style="background-color: #E5E4E2 !important ; padding-bottom: 15px !important; " >
+            <div class="" style="">
+                <div style="color: black; font-size:14px; padding-top: 10px; padding-bottom: 10px ; font-weight: 800; " >  
+                    {{ i.quiz_name }}
+                </div>
+                <div class="">
+                    <img width="100%" class  = 'img-fluid'
+                    src="{% static 'core/images/Banner-Quiztainment-thumbnail2.jpg' %}" alt="">
+
+                </div>
+                <div class="shadow btn btn-sm btn-info "   
+                style="width: 100%; background-color: gray ; " > Till 
+                  {{ i.end_date_time }}
+                </div>
+                <div class="btn w-100 btn-sm btn-info" style="width: 100% ;" >
+                    Score Board
+
+                </div>
+
+                <div>
+                    {% if request.user.is_authenticated %}
+
+                    {% if i.status == 'OPENED' %}
+                    <form class="w-100 d-flex d-inline " action="{% url 'start_quiz'   %}" method="POST">
+                      {% csrf_token %}
+                      <input type="hidden"  
+                      value="{{ i.id }}" name="open_quiz_id" 
+                      id  ="open_quiz_id">
+                      <button type="submit" class="btn w-100 btn-sm btn-success"style=" background-color: green ; padding: 5px 5px ; width:100%   " > Start Quiz </button>
+                    </form>
+                    {% endif %}
+                    {% else %}
+                    <button type="button" class="btn w-100 btn-sm btn-success"style=" background-color: green ; padding: 5px 5px ; width:100%   " > Login & Play </button>
+                    {% endif %}
+    
+
+
+                </div>
+
+  
+            </div>
+
+       
+        
+        {% endfor %}
+                    
+        {% endif  %}
+    
+    
+      </div>
+    
+
+
+
+    </div>
+</div>
+
+
+
+
+{% endblock content %}
+    
+  
