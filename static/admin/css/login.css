@@ -1,61 +1,64 @@
-/* LOGIN FORM */
+    .login-container {
+        display: flex;
+        height: 100vh;
+        background: white;
+    }
 
-.login {
-    background: var(--darkened-bg);
-    height: auto;
-}
+    .login-form-section {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+    }
 
-.login #header {
-    height: auto;
-    padding: 15px 16px;
-    justify-content: center;
-}
+    .login-inner {
+        width: 100%;
+        max-width: 400px;
+    }
 
-.login #header h1 {
-    font-size: 18px;
-    margin: 0;
-}
+    .login-inner h1 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #14A43B;
+    }
 
-.login #header h1 a {
-    color: var(--header-link-color);
-}
+    .image-section {
+        flex: 1;
+        background-color: #F7F8FA;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-.login #content {
-    padding: 20px 20px 0;
-}
+    .image-section img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
 
-.login #container {
-    background: var(--body-bg);
-    border: 1px solid var(--hairline-color);
-    border-radius: 4px;
-    overflow: hidden;
-    width: 28em;
-    min-width: 300px;
-    margin: 100px auto;
-    height: auto;
-}
+    .login-inner .btn {
+        background-color: #14A43B;
+        color: white;
+        font-weight: bold;
+        padding: 10px 20px;
+        width: 100%;
+    }
 
-.login .form-row {
-    padding: 4px 0;
-}
+    .login-inner .btn:hover {
+        background-color: #128333;
+    }
 
-.login .form-row label {
-    display: block;
-    line-height: 2em;
-}
+    .login-inner a {
+        color: #14A43B;
+        text-decoration: none;
+    }
 
-.login .form-row #id_username, .login .form-row #id_password {
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
-}
+    .login-inner a:hover {
+        text-decoration: underline;
+    }
 
-.login .submit-row {
-    padding: 1em 0 0 0;
-    margin: 0;
-    text-align: center;
-}
-
-.login .password-reset-link {
-    text-align: center;
-}
+    .text-small {
+        font-size: 14px;
+    }

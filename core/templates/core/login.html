@@ -1,139 +1,171 @@
-{% extends "core/base.html" %}
-
 {% load static %}
-
 
 {% block title %}
 <title>Quiztainment-Login</title>
+<link rel="stylesheet" href="{% static 'admin/css/login.css' %}">
 {% endblock title %}
 
-
 {% block extra_header_meta_tag %}
-<meta name="title" content="Login: | Quiztainment"> 
-<meta name="description" content="We have thousands of GK quizzes and tests online at Quiztainment. To learn through real-time testing, Simply Login/ Register the desired information link....">
-{% endblock extra_header_meta_tag %}   
-
-
-
-
+<meta name="title" content="Login: | Quiztainment">
+<meta name="description"
+    content="We have thousands of GK quizzes and tests online at Quiztainment. To learn through real-time testing, Simply Login/ Register the desired information link....">
+{% endblock extra_header_meta_tag %}
 
 {% block content %}
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
+    html,
+    body {
+        height: 100%;
+        overflow: hidden;
+    }
 
+    .login-container {
+        display: flex;
+        height: 100vh;
+        width: 100%;
+    }
 
+    .login-form-section {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        background-color: #fff;
+    }
 
+    .login-inner {
+        width: 100%;
+        max-width: 400px;
+    }
 
-    <!-- ==============================================
-    ** Login **
-    =================================================== -->
-    <section class="login-wrapper" >
+    .login-inner .logo {
+        display: flex;
+        align-items: center;
+        /* margin-bottom: 20px; */
+    }
 
+    .login-inner .logo img {
+        height: 35px;
+        margin-right: 10px;
+    }
 
+    .login-inner h1 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #000;
+    }
 
+    .login-inner p {
+        font-size: 14px;
+        color: #777;
+        margin-bottom: 25px;
+        line-height: 4px;
+    }
 
-        <div class="inner "  >
+    .login-inner input,
+    .login-inner select,
+    .login-inner textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        border-radius: 4px;
+    }
 
-           
+    .login-inner .btn {
+        background-color: #f7931e;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-top: 5px;
+    }
 
+    .login-inner .btn:hover {
+        background-color: #da800d;
+    }
 
-            <div class="login" style="border:2px solid black !important"   >
-                <p>
-                    {% if messages %}
-                    {% for message in messages %}
-                        {% if message.tags %}
-                        <div class="alert  alert-{{ message.tags }} alert-dismissible " role="alert" 
+    .login-inner .footer-text {
+        font-size: 13px;
+        margin-top: 20px;
+        color: #666;
+        text-align: center;
+    }
 
-                        {% if message.tags == 'warning' %}
-                        style="background-color:#FF9E19 !important; color:white " 
-                        {% else %}
-                            style="background-color: #51B560 !important; color:white " 
-                        {% endif  %}
+    .login-inner .footer-text a {
+        color: #f7931e;
+        text-decoration: none;
+        font-weight: 600;
+    }
 
-                        >
-                          <button type="button " class="close p-0 btn  btn-sm  text-white  h-100 " data-dismiss="alert" aria-label="Close">
-                            <a class="close-link"><i class="fa fa-2x fa-close " style="color:white !important" ></i></a>
-                          </button>
-                          <strong>{{ message.tags }}!</strong> {{ message }}
-                          </div>
-      
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-  
+    .login-inner .forgot {
+        text-align: right;
+        font-size: 13px;
+        margin-top: -10px;
+        margin-bottom: 15px;
+    }
 
-                </p>
-                <div class="head-block">
+    .forgot a {
+        color: #14A43B;
+        font-weight: 500;
+        text-decoration: none;
+    }
 
-                    <h1 class="" >  Login  </h1>
-                </div>
-                <div class="cnt-block">
+    .image-section {
+        width: 50%;
+        background-color: #f7f7f7;
+    }
 
-            
-                        <table class="table table-sm small p-0 m-0" >
-                        <form action="" method="POST" novalidate>
-                            {% csrf_token %}  
-                            {{  user_login_form }}      
+    .image-section img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0;
+    }
+</style>
 
-                        
-                        {% if continue %}
-                        <tr>
-                            <td colspan="2" > 
-                                <input type="hidden"  id = 'user_login_password' name="user_login_password" value = '{{ user_login_password }}'>
-                                <input type="hidden"  id = 'uname' name="uname" value = '{{ uname }}'>
-                                <button  class="btn btn-success btn-block mb-4" type="submit" name ='continue' > Continue </button>
-                            </td>
-
-                        
-                         {% else %}
-                         <td colspan="2" class = 'text-right' > 
-                             <!--a href = '{% url  'register'  %}'  class="btn"  style = 'color:white !important' >    Register  </a--> 
-                            <span style="padding-top: 10px; padding-bottom: 10px; float: left; text-align:left; font-size: 15px;">If you don't have an account<br>then click <a href="{% url 'register' %}" style="color: #14A43B; text-decoration: none;">Register</a>! </span>
-                            <button type="submit"  value="Login" class="btn" name = 'login'   > Login  <span class="icon-more-icon"></span> </button>
-
-
-                        </td>
-
-                        </tr>
-
-                         
-                        {% endif %}
-                
-
-
-                    </form>
-                    <tr>
-                        <td colspan="2"> 
-                            <div class="login-footer" style="background-color:#14A43B ;" >
-                                <ul class="follow-us clearfix"  >
-
-                                    <li><a href="https://www.facebook.com/quiztainmentpak">
-                                        <i class="fa-2x fa fa-facebook"  style="color:black !important"  aria-hidden="true"></i></a></li>
-                                    <li><a href="https://www.youtube.com/channel/UC14RPc5q8OKMxT_bGMTrX6g">
-                                        <i class=" fa-2x fa fa-youtube-play" style="color:black !important"  aria-hidden="true"></i></a></li>
-                                    <li><a href="https://www.instagram.com/quiztainment/">
-                                        <i class=" fa-2x fa fa-instagram"  style="color:black !important" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class=""  >
-                        <td colspan = '2' >  <a href=" {% url  'password_reset'  %} "> Forget Password ?  </a>  </td>
-                    </tr>
-                    </table>
-        
-
-
-                </div>
-
-                
+<div class="login-container">
+    <div class="login-form-section">
+        <div class="login-inner">
+            <img src="{% static 'core/images/quiztainment-logo-nav.png.png' %}" alt="Logo">
+            <div class="logo">
+                <h1>Welcome to Quiztainment</h1>
             </div>
+            <p>Welcome back! Enter your credentials to login</p>
+            <form action="" method="POST" novalidate>
+                {% csrf_token %}
+                {{ user_login_form }}
+
+                {% if continue %}
+                <input type="hidden" id='user_login_password' name="user_login_password"
+                    value='{{ user_login_password }}'>
+                <input type="hidden" id='uname' name="uname" value='{{ uname }}'>
+                <button class="btn" type="submit" name='continue'>Continue</button>
+                {% else %}
+                <div class="forgot"><a href="{% url 'password_reset' %}">Forgot your password?</a></div>
+                <button type="submit" class="btn" name='login'>Login</button>
+                <div class="footer-text">
+                    Don’t have an account? <a href="{% url 'register' %}">Sign up</a>
+                </div>
+                {% endif %}
+            </form>
         </div>
-    </section>
-
-
-
-
+    </div>
+    <div class="image-section">
+        <img src="{% static 'core/images/login.png' %}" alt="Login Banner">
+    </div>
+</div>
 {% endblock content %}
-    
-  
-

@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-qzpgi5q^na9^dt_on3a16%p1_9(*6-a1gl1+czuac6btoplj3v'
+SECRET_KEY = "django-insecure-qzpgi5q^na9^dt_on3a16%p1_9(*6-a1gl1+czuac6btoplj3v"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -30,13 +30,16 @@ DEBUG = True
 # DEBUG_PROPAGATE_EXCEPTIONS = True
 
 
-
 # ALLOWED_HOSTS = [ "3.108.172.139" , "quiztainment.com.pk" , "www.quiztainment.com.pk"]
-ALLOWED_HOSTS = ["quiztainment.com.pk","www.quiztainment.com.pk",'127.0.0.1', 'localhost']
+ALLOWED_HOSTS = [
+    "quiztainment.com.pk",
+    "www.quiztainment.com.pk",
+    "127.0.0.1",
+    "localhost",
+]
 
 
 # CSRF_TRUSTED_ORIGINS = ['https://quiztainment.com.pk' , 'https://*quiztainment.com.pk' , 'https://www.quiztainment.com.pk']
-
 
 
 SITE_ID = 1
@@ -45,68 +48,65 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'core',
-	'qestions',
-	'quizopen',
-	'quizpayment',
-	'quizpolicy',
-	'quizresult',
-	'quizstart',
-	'quizwinner',
-	'userdashboard',
-	'assigned_quiz',
-	'quizattempt',
-    'custom_authentication',
-    'rest_framework',
-    'import_export',
-    'embed_video',
-    'crispy_forms',
-    'djcelery_email',
-    'tawkto' , 
-    'django.contrib.sitemaps',
-    'custom_blog',
-    'ckeditor','ckeditor_uploader'
-
-
-
-
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "core",
+    "qestions",
+    "quizopen",
+    "quizpayment",
+    "quizpolicy",
+    "quizresult",
+    "quizstart",
+    "quizwinner",
+    "userdashboard",
+    "assigned_quiz",
+    "quizattempt",
+    "custom_authentication",
+    "rest_framework",
+    "import_export",
+    "embed_video",
+    "crispy_forms",
+    "djcelery_email",
+    "tawkto",
+    "django.contrib.sitemaps",
+    "custom_blog",
+    "ckeditor",
+    "ckeditor_uploader",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'quiz.urls'
+ROOT_URLCONF = "quiz.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'quiz.wsgi.application'
+WSGI_APPLICATION = "quiz.wsgi.application"
 
 
 # Database
@@ -118,16 +118,15 @@ WSGI_APPLICATION = 'quiz.wsgi.application'
 # database name quizdb
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'quiztainment_quizdb', 
-        'USER': 'root', 
-        'PASSWORD': 'root',
-        'HOST' : 'localhost',
-        'PORT': '3306',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "quiztainment_quizdb",
+        "USER": "root",
+        "PASSWORD": "root",
+        "HOST": "localhost",
+        "PORT": "3306",
     }
 }
-
 
 
 # CACHES = {
@@ -150,19 +149,19 @@ AUTH_PASSWORD_VALIDATORS = []
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
 # TIME_ZONE = 'UTC'
 
 # date_default_timezone_set("Asia/Karachi");
 
-TIME_ZONE = 'Asia/Karachi'
-DATETIME_FORMAT="d-m-Y H:i:s"
+TIME_ZONE = "Asia/Karachi"
+DATETIME_FORMAT = "d-m-Y H:i:s"
 
 DATE_FORMAT = "d-m-Y"
 
 USE_L10N = False
-L10N=False
+L10N = False
 
 USE_TZ = False
 
@@ -170,11 +169,11 @@ IMPORT_EXPORT_USE_TRANSACTIONS = True
 # EmailProject/settings.py
 
 # Bottom of the file
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 # EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
-EMAIL_HOST = 'smtp.zoho.com'
-EMAIL_PORT =  587
-EMAIL_HOST_USER = 'info@quiztainment.com.pk'
+EMAIL_HOST = "smtp.zoho.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "info@quiztainment.com.pk"
 EMAIL_HOST_PASSWORD = """cv-C(@:5ye8f">YfR\wM'6]Cv3%9_Y"""
 
 EMAIL_USE_SSL = False
@@ -182,7 +181,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "webmaster@localhost"
 
 
-DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+DEFAULT_FROM_EMAIL = "webmaster@localhost"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -190,27 +189,25 @@ DEFAULT_FROM_EMAIL = 'webmaster@localhost'
 # STATIC_URL = 'static/'
 
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-
-
-STATIC_URL = '/static/'
-
-MEDIA_URL = '/media/'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # CKEDITOR_UPLOAD_PATH = "uploads/"
 
-#STATIC_ROOT = '/home/quiztainment/new_quiztainment/static/'
+# STATIC_ROOT = '/home/quiztainment/new_quiztainment/static/'
 
-STATIC_ROOT = '/home/quiztainment/quiztainment/static/'
+STATIC_ROOT = "/home/quiztainment/quiztainment/static/"
 
-#STATIC_ROOT = os.path.join(BASE_DIR,'static')
+# STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 
 # if DEBUG:
@@ -221,32 +218,28 @@ STATIC_ROOT = '/home/quiztainment/quiztainment/static/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
 
 CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': None,
+    "default": {
+        "toolbar": None,
     },
 }
 
 
-
-# Old ID 
+# Old ID
 # TAWKTO_ID_SITE='6378b81eb0d6371309cff00f'
 
-TAWKTO_ID_SITE='6380a61cdaff0e1306d96267'
+TAWKTO_ID_SITE = "6380a61cdaff0e1306d96267"
 
 
+# old id
+# TAWKTO_API_KEY='96a293cbec68d72fe74940f4f667ef319004535b'
 
+TAWKTO_API_KEY = "6ab35d66186b53ad91099c5b3def690679948580"
 
-#old id
-#TAWKTO_API_KEY='96a293cbec68d72fe74940f4f667ef319004535b'
-
-TAWKTO_API_KEY='6ab35d66186b53ad91099c5b3def690679948580'
-
-TAWKTO_IS_SECURE=True
+TAWKTO_IS_SECURE = True

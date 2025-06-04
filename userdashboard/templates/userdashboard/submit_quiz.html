@@ -1,333 +1,331 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    
-    {% block user_dashboard_meta_html %}
 
-    {% include 'userdashboard/user_dashboard_meta_html.html' %} 
+<head>
 
+  {% block user_dashboard_meta_html %}
 
-
-    
-    {% endblock user_dashboard_meta_html %}
+  {% include 'userdashboard/user_dashboard_meta_html.html' %}
 
 
-    
-    {% block user_dashbaord_title %}
-      
-    <title> Submit  </title>
 
 
-    {% endblock user_dashbaord_title %}
-      
-        
+  {% endblock user_dashboard_meta_html %}
 
 
-    
-    {% block header_html_links %}
-    {% include 'userdashboard/header_html_links.html' %}
-      
-    {% endblock header_html_links %}
-      
+
+  {% block user_dashbaord_title %}
+
+  <title> Submit </title>
 
 
-  </head>
-
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-
-
-        
-        {% block user_dashboard_side_menu %}
-        {% include 'userdashboard/user_dashboard_side_menu.html' %}
-          
-        {% endblock user_dashboard_side_menu %}
-          
-
-
-        {% block use_dashboard_top_navigation %}
-        {% include 'userdashboard/use_dashboard_top_navigation.html' %}
-          
-        {% endblock use_dashboard_top_navigation %}
-          
+  {% endblock user_dashbaord_title %}
 
 
 
 
 
-        {% block use_dashboard_content %}
-          
-          
+  {% block header_html_links %}
+  {% include 'userdashboard/header_html_links.html' %}
+
+  {% endblock header_html_links %}
 
 
 
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <!-- top tiles Heading  -->
-          <div class="row" style="display: inline-block;" >
+</head>
+
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+
+
+
+      {% block user_dashboard_side_menu %}
+      {% include 'userdashboard/user_dashboard_side_menu.html' %}
+
+      {% endblock user_dashboard_side_menu %}
+
+
+
+      {% block use_dashboard_top_navigation %}
+      {% include 'userdashboard/use_dashboard_top_navigation.html' %}
+
+      {% endblock use_dashboard_top_navigation %}
+
+
+
+
+
+
+      {% block use_dashboard_content %}
+
+
+
+
+
+      <!-- page content -->
+      <div class="right_col" role="main">
+        <!-- top tiles Heading  -->
+        <div class="row" style="display: inline-block;">
           <div class="tile_count">
 
           </div>
         </div>
-          <!-- /top tiles Heading -->
+        <!-- /top tiles Heading -->
 
 
-          <!-- Main Content row  -->
+        <!-- Main Content row  -->
 
-          <div class="row justify-content-around d-flex  ">
-            <div class="col-md-12 col-sm-12    ">
-              <div class="dashboard_graph">
+        <div class="row justify-content-around d-flex  ">
+          <div class="col-md-12 col-sm-12    ">
+            <div class="dashboard_graph">
 
-                <div class="row x_title">
-                  <div class="col-md-8">
-                    <h3>  Quiz </h3>
+              <div class="row x_title">
+                <div class="col-md-8">
+                  <h3> Quiz </h3>
+                </div>
+
+                <div class="col-md-4">
+                  <h3 class="text-right">
+                    <button class="btn btn-success  " style="color:white !important"> <b id="hms_timer"></b> </button>
+
+                  </h3>
+                </div>
+
+
+
+
+
+
+              </div>
+
+
+              <div class="row">
+                <div class="col-lg-12">
+
+                  {% if messages %}
+                  {% for message in messages %}
+                  {% if message.tags %}
+                  <div class="alert alert-{{ message.tags }} alert-dismissible " role="alert">
+                    <button type="button " class="close p-0 btn  btn-sm  text-white  h-100 " data-dismiss="alert"
+                      aria-label="Close">
+                      <a class="close-link"><i class="fa fa-close"></i></a>
+                    </button>
+                    <strong>{{ message.tags }}!</strong> {{ message }}
                   </div>
 
-                  <div class="col-md-4">
-                    <h3 class="text-right" >  
-                      <button class="btn btn-success  " style="color:white !important" >  <b id="hms_timer"></b>   </button>  
-                           
-                      </h3>
-                  </div>
-
-                  
-
+                  {% endif %}
+                  {% endfor %}
+                  {% endif %}
 
 
 
                 </div>
-
-                
-                <div class="row">
-                  <div class="col-lg-12">
-
-                    {% if messages %}
-                    {% for message in messages %}
-                        {% if message.tags %}
-                        <div class="alert alert-{{ message.tags }} alert-dismissible " role="alert">
-                          <button type="button " class="close p-0 btn  btn-sm  text-white  h-100 " data-dismiss="alert" aria-label="Close">
-                            <a class="close-link"><i class="fa fa-close"></i></a>
-                          </button>
-                          <strong>{{ message.tags }}!</strong> {{ message }}
-                          </div>
-
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
+              </div>
 
 
+              <div class="row justify-content-around d-flex  ">
+                <div class="col-lg-12 ">
+                  {% if quiz %}
+                  <div class="card p-4 shadow  ">
+                    <form action="" method='POST' id="attempt_question_form" class="attempt_question_form">
+                      {% csrf_token %}
+                      <h6 style="background-color: #3d4d60; color:white; ;"
+                        class=" card-header shadow py-4 border  py-4">
 
+                        Q : {{ quiz.question.question }}
+                      </h6>
+                      <div class="form-check py-2 ">
+                        <input class="form-check-input" type="radio" name="user_select_option" id="user_option_one"
+                          value="1">
+                        <label class="form-check-label" for="user_option_one" style="font-size: 15px;">
+                          {{ quiz.question.option_one }}
+                        </label>
+                      </div>
+
+                      <div class="form-check py-2 ">
+                        <input class="form-check-input" type="radio" name="user_select_option" id="user_option_two"
+                          value="2">
+                        <label class="form-check-label" for="user_option_two" style="font-size: 15px;">
+                          {{ quiz.question.option_two }}
+
+                        </label>
+                      </div>
+
+
+
+
+
+                      <div class="form-check py-2 ">
+                        <input class="form-check-input" type="radio" name="user_select_option" id="user_option_three"
+                          value="3">
+                        <label class="form-check-label" for="user_option_three" style="font-size: 15px;">
+                          {{ quiz.question.option_three }}
+
+                        </label>
+                      </div>
+
+
+
+
+                      <div class="form-check py-2 ">
+                        <input class="form-check-input" type="radio" name="user_select_option" id="user_option_four"
+                          value="4">
+                        <label class="form-check-label" for="user_option_four" style="font-size: 15px;">
+                          {{ quiz.question.option_four }}
+
+                        </label>
+                      </div>
+
+
+
+                      <div class="py-4">
+                        <input type="hidden" name="question_id" value="{{ quiz.id }}" />
+                        <input type="submit" name="skip" value="Skip" class='btn btn-warning skipped_submitted ' />
+                        <input type="submit" name="submit" value="Submit" class='btn btn-primary btn_submitted ' />
+                        <!-- <input type="button" name = "finish_quiz_btn" value="{{  quiz_start_id }}" class = 'btn btn-dark finish_quiz_btn ' /> -->
+
+
+
+                      </div>
+                    </form>
                   </div>
-                </div>
-
-
-                <div class="row justify-content-around d-flex  ">
-                    <div class="col-lg-12 ">
-                        {% if quiz %}
-                        <div class="card p-4 shadow  "> 
-                            <form action="" method = 'POST' 
-                            id = "attempt_question_form"  class="attempt_question_form"  >
-                                {% csrf_token %}
-                                <h6 style="background-color: #3d4d60; color:white; ;" class=" card-header shadow py-4 border  py-4"   >
-
-                                  Q :  {{ quiz.question.question  }}
-                                </h6>
-                                <div class="form-check py-2 ">
-                                    <input class="form-check-input" type="radio" name="user_select_option" id="user_option_one" 
-                                    value="1"   >
-                                    <label class="form-check-label" for="user_option_one"
-                                    style="font-size: 15px;">
-                                    {{ quiz.question.option_one  }}
-                                    </label>
-                                </div>
-    
-                                <div class="form-check py-2 ">
-                                    <input class="form-check-input" type="radio" name="user_select_option" id="user_option_two" 
-                                    value="2"  >
-                                    <label class="form-check-label" for="user_option_two"
-                                    style="font-size: 15px;">
-                                    {{ quiz.question.option_two  }}
-
-                                </label>
-                                </div>
-    
-    
-    
-    
-    
-                                <div class="form-check py-2 ">
-                                    <input class="form-check-input" type="radio" name="user_select_option" id="user_option_three" 
-                                    value="3"    >
-                                    <label class="form-check-label" for="user_option_three"
-                                    style="font-size: 15px;"
-                                    >
-                                    {{ quiz.question.option_three  }}
-
-                                </label>
-                                </div>
-    
-
-
-    
-                                <div class="form-check py-2 ">
-                                    <input class="form-check-input" type="radio" name="user_select_option" 
-                                    id="user_option_four" value="4"   >
-                                    <label class="form-check-label" for="user_option_four"
-                                    style="font-size: 15px;"
-                                    >
-                                    {{ quiz.question.option_four  }}
-
-                                </label>
-                                </div>
-
-    
-                                
-                                <div class="py-4">
-                                  <input type="hidden" name = "question_id"  value="{{ quiz.id }}" />
-                                  <input type="submit" name = "skip"  value="Skip" class = 'btn btn-warning skipped_submitted ' />
-                                    <input type="submit" name = "submit" value="Submit" class = 'btn btn-primary btn_submitted ' />
-                                    <!-- <input type="button" name = "finish_quiz_btn" value="{{  quiz_start_id }}" class = 'btn btn-dark finish_quiz_btn ' /> -->
-
-
-
-                                </div>
+                  {% else %}
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <h4> Thankyou For Attempting The Questions. </h4>
+                      <div>
+                        <div class="col-6 ">
+                          <table>
+                            <tr>
+                              <td>
+                                <form action="{% url 'submit_quiz_result' %}" method="POST">
+                                  {% csrf_token %}
+                                  <input type="hidden" value="{{ quiz_start_id }}" name="quiz_start_id">
+                                  <button class="btn  " style="background-color: #20A63F; color:white ;"> Finshed Quiz &
+                                    Check Result Card </button>
                                 </form>
-                            </div>
-                        {% else %}
-                        <div class="row">
-                          <div class="col-lg-12">
-                              <h4> Thankyou For Attempting The Questions. </h4> 
-                            <div> 
-                              <div class="col-6 ">
-                                <table>
-                                  <tr>
-                                    <td> 
-                                      <form action="{% url 'submit_quiz_result' %}" method="POST">
-                                        {% csrf_token %}
-                                        <input type="hidden" value="{{ quiz_start_id }}" name = "quiz_start_id" >
-                                        <button class="btn  " style="background-color: #20A63F; color:white ;"  > Finshed Quiz & Check Result Card </button>  
-                                      </form>      
 
-                                    </td>
-                                  </tr>
-                                </table> 
-
-  
-
-                              </div>
+                              </td>
+                            </tr>
+                          </table>
 
 
 
-                            </div>
-
-                          </div>
                         </div>
 
-                        {% endif %}
-                        
 
 
-                        <script src="{% static  'core/vendors/jquery/dist/jquery.min.js' %} "></script>
-                        <script>
-                            $(document).ready(function(){
-                                $(".btn_submitted").click(function(){
-                                    var answers_radio = $("input[name  = 'user_select_option']:checked").val()
-                                    if (answers_radio == "" || answers_radio == undefined){
-                                        alert("Please Mark The Question ")
-                                        return false
-                                    }
-                                    else{
-                                      $(".btn_submitted").addClass('disabled')
-                                      
-                                      $(".btn_submitted").css('display', 'none')
-
-
-                                      $(".skipped_submitted").addClass('disabled')
-                                      $(".skipped_submitted").css('display', 'none')
-
-
-
-
-
-                                      
-                                    }
-                                });
-
-                            });
-
-
-                          $('#hms_timer').countdowntimer({
-                              hours :   {{ quiz_time.duration_hour }} ,
-                              minutes : {{ quiz_time.duration_mintues }},
-                              seconds :  {{ quiz_time.duration_seconds }},
-                              size : "lg",
-                          });
-            
-
-
-
-                </script>
-
-
-
+                      </div>
 
                     </div>
+                  </div>
 
-    
-    
-    
-    
-                    
-    
+                  {% endif %}
+
+
+
+                  <script src="{% static  'core/vendors/jquery/dist/jquery.min.js' %} "></script>
+                  <script>
+                    $(document).ready(function () {
+                      $(".btn_submitted").click(function () {
+                        var answers_radio = $("input[name  = 'user_select_option']:checked").val()
+                        if (answers_radio == "" || answers_radio == undefined) {
+                          alert("Please Mark The Question ")
+                          return false
+                        }
+                        else {
+                          $(".btn_submitted").addClass('disabled')
+
+                          $(".btn_submitted").css('display', 'none')
+
+
+                          $(".skipped_submitted").addClass('disabled')
+                          $(".skipped_submitted").css('display', 'none')
+
+
+
+
+
+
+                        }
+                      });
+
+                    });
+
+
+                    $('#hms_timer').countdowntimer({
+                      hours: {{ quiz_time.duration_hour }} ,
+                      minutes : {{ quiz_time.duration_mintues }},
+                      seconds : {{ quiz_time.duration_seconds }},
+                      size : "lg",
+                          });
+
+
+
+
+                  </script>
+
+
+
 
                 </div>
-                    
-                    
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+            </div>
+            <br />
+
+
+
+
+
+
+            <!-- /Main Content row  -->
+
+
 
 
 
           </div>
-          <br />
+          <!-- /page content -->
+
+
+          {% endblock use_dashboard_content %}
 
 
 
+          {% block use_dashboard_footer %}
 
-
-
-          <!-- /Main Content row  -->
-
-
-
-
-
+          {% endblock use_dashboard_footer %}
         </div>
-        <!-- /page content -->
-
-
-        {% endblock use_dashboard_content %}
-
-
-        
-        {% block use_dashboard_footer %}
-     
-        {% endblock use_dashboard_footer %}
       </div>
-    </div>
-
-    
-    {% block footer_js_links %}
-    {% include 'userdashboard/footer_js_links.html' %}      
-    {% endblock footer_js_links %}
 
 
+      {% block footer_js_links %}
+      {% include 'userdashboard/footer_js_links.html' %}
+      {% endblock footer_js_links %}
 
-    {% block extra_footer_js_links %}
-    {% include 'userdashboard/extra_footer_js_links.html' %}      
-    {% endblock extra_footer_js_links %}
 
 
-	
-  </body>
+      {% block extra_footer_js_links %}
+      {% include 'userdashboard/extra_footer_js_links.html' %}
+      {% endblock extra_footer_js_links %}
+
+
+
+</body>
+
 </html>
