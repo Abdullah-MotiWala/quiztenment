@@ -1,94 +1,173 @@
 {% load static %}
 
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0; background-color: #EDEDED ; ">
-              <a href="{% url  'home'  %}" class="site_title">
+<style>
+  .nav-item i {
+    font-size: 1rem;
+    font-weight: 500;
+  }
 
-                <span>
-                  <img src="{% static 'core/images/quiztainment-logo.png' %}" alt="">
-                
-              
-              </span></a>
-            </div>
+  .nav-link {
+    cursor: pointer;
+  }
 
-            <div class="clearfix"></div>
+  .nav-foot i {
+    font-size: 1rem;
+    font-weight: 500;
+  }
 
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_info">
-                <span>Welcome   {{ request.user }}  </span>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
+  .nav-item a,
+  .nav-foot a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 15px !important;
+  }
 
-            <br />
+  .nav-item a span,
+  .nav-foot a span {
+    margin-left: 12px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 0;
+  }
 
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
+  .nav-item p,
+  .nav-link p {
+    margin: 0;
+  }
 
+  .nav-item a p .lg-icon,
+  .nav-link>p .lg-icon {
+    font-size: 20px;
+  }
 
-                <ul class="nav side-menu">
+  .nav-profile {
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    margin-bottom: 2rem;
+  }
 
+  .nav-profile .profile-heading {
+    font-weight: 300;
+    opacity: 0.6;
+    line-height: 0;
+    margin: 0;
+    margin-bottom: 6px;
+    margin-top: 6px;
+  }
 
-                  <li>
-                    <a  href="{% url  'home'  %}" ><i   class="fa fa-home"></i>  Home 
-                    </a>
-                  </li>
+  .nav-md ul.nav.child_menu li:before {
+    background: #fff !important;
+    margin-top: 10px !important;
+  }
+</style>
 
+<div class="col-md-3 m-4  sidebar"
+  style="background-color: #149336; min-height: 100vh; padding: 20px 0; color: white; border-radius: 20px ; display: flex; flex-direction: column;">
+  <div class="text-center mb-4">
+    <a href="{% url  'home'  %}">
+      <img src="{% static 'core/images/navbar-logo.png' %}" alt="Quiztainment" class="img-fluid" width="120">
+    </a>
+  </div>
 
-                  <li>
-                    <a  href="{% url  'user_dashboard'  %}" ><i   class="fa  fa-tachometer"></i> Dashboard 
-                    </a>
-                  </li>
+  <div class="nav-profile">
+    <div class="d-flex justify-content-center">
+      <img src="{% static 'core/images/profile.png' %}" alt="User" class="rounded-circle" width="30" height="30">
+    </div>
+    <div class="m-2" style="font-size: 14px;">
+      <p class="profile-heading">USER</p>
+      <span style="font-weight: 600; font-size: 16px;">{{ request.user }}</span>
+      <p class="profile-heading">Edit Account Info</p>
+    </div>
+  </div>
 
-                  <li><a><i class="fa fa-edit"></i> QUIZ <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{% url  'open_quiz'  %}"> Play Quiz </a></li>
-                      <li><a href="{% url 'result_board'  %}"> Top Scrorer  </a></li>
-                      <li><a href="{% url 'played_list'  %}"> Your Paid Quiz Records </a></li>
+  <ul id="sidebar-menu" class="main_menu_side hidden-print main_menu nav flex-column px-3">
+    <li class="nav-item mb-0">
+      <a href="{% url 'user_dashboard' %}" class="nav-link text-white d-flex align-items-center gap-2">
+        <p>
+          <i class="fa fa-dashboard fa-lg lg-icon"></i>
+          <span>
+            Dashboard
+          </span>
+        </p>
+        <span class="ms-auto"><i class="fa fa-chevron-right"></i></span>
+      </a>
+    </li>
+    <li class="nav-item mb-1 mt-3">
+      <a class="nav-link text-white d-flex align-items-center gap-2">
+        <p>
+          <i class="fa fa-user"></i>
+          <span>
+            User
+          </span>
+        </p>
+        <span class="ms-auto"><i class="fa fa-chevron-right"></i></span>
+      </a>
 
-                      <li><a href="{% url 'free_played_list'  %}"> Your Free Quiz Records </a></li>
+      <ul class="nav child_menu">
+        <li><a href="{% url  'update_user'  %}"> User Info</a></li>
+        <li><a href=" {% url 'change_password'  %} ">Update Password</a></li>
+        <li><a href=" {% url 'user_profile'  %} ">Personal Info </a></li>
+      </ul>
+    </li>
+    <!-- <li class="nav-item mb-1 mt-3">
+      <a href="#" class="nav-link text-white d-flex align-items-center gap-2">
+        <p>
+          <i class="fa fa-bell lg-icon"></i>
+          <span>
+            Notification
+          </span>
+        </p>
+        <span class="ms-auto"><i class="fa fa-chevron-right"></i></span>
+      </a>
+    </li> -->
+    <!-- <li class="nav-item mb-1 mt-3">
+      <a href="#" class="nav-link text-white d-flex align-items-center gap-2">
+        <p>
+          <i class="fa fa-cog lg-icon"></i>
+          <span>
+            Settings
+          </span>
+        </p>
+        <span class="ms-auto"><i class="fa fa-chevron-right"></i></span>
+      </a>
+    </li> -->
 
+    <li class="nav-item mb-1 mt-3">
+      <a class="nav-link text-white d-flex align-items-center gap-2">
+        <p>
+          <i class="fa fa-edit lg-icon"></i>
+          <span>
+            Quiz
+          </span>
+        </p>
+        <span class="ms-auto"><i class="fa fa-chevron-right"></i></span>
+      </a>
+      <ul class="nav child_menu">
+        <li><a href="{% url  'open_quiz'  %}"> Play Quiz </a></li>
+        <li><a href="{% url 'result_board'  %}"> Top Scrorer </a></li>
+        <li><a href="{% url 'played_list'  %}"> Your Paid Quiz Records </a></li>
+        <li><a href="{% url 'free_played_list'  %}"> Your Free Quiz Records </a></li>
+        <li><a href="{% url 'start_quiz_history'  %}"> Your Payment Records </a></li>
+      </ul>
+    </li>
+  </ul>
 
-
-                      <li><a href="{% url 'start_quiz_history'  %}"> Your Payment Records </a></li>
-
-
-
-                    </ul>
-                  </li>
-
-
-
-                  <li><a><i class="fa fa-user"></i> User <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{% url  'update_user'  %}"> User Info</a></li>
-                      <li><a href=" {% url 'change_password'  %} ">Update Password</a></li>
-                      <li><a href=" {% url 'user_profile'  %} ">Personal Info </a></li>
-
-
-                    </ul>
-                  </li>
-
-
-
-
-
-
-                </ul>
-              </div>
-
-              <div class="menu_section">
-                
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
-
-          </div>
-        </div>
-
-
+  <div class="mt-auto px-3 nav-foot">
+    <a href="{% url 'logout' %}"
+      class="nav-link text-white d-flex align-items-center justify-content-between rounded-pill bg-transparent border-0">
+      <p>
+        <i class="fa fa-sign-out lg-icon"></i>
+        <span>
+          Log out
+        </span>
+      </p>
+      <span>
+        <i class="fa fa-chevron-right"></i>
+      </span>
+    </a>
+  </div>
+</div>

@@ -3,507 +3,415 @@
 <html lang="en">
 
 <head>
-
-
-
-
-
-  {% block user_dashboard_meta_extra %}
-  {% endblock user_dashboard_meta_extra %}
-
-
+  {% block user_dashboard_meta_extra %}{% endblock user_dashboard_meta_extra %}
   {% block user_dashboard_meta_html %}
   {% include 'userdashboard/user_dashboard_meta_html.html' %}
   {% endblock user_dashboard_meta_html %}
 
-
-
   {% block user_dashbaord_title %}
-
   <title> User Dashboard </title>
-
-
   {% endblock user_dashbaord_title %}
-
-
-
-
 
   {% block header_html_links %}
   {% include 'userdashboard/header_html_links.html' %}
-
   {% endblock header_html_links %}
 
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F6F7FB;
+    }
 
+    .card {
+      border-radius: 12px;
+      background-color: #ffffff;
+      padding: 16px;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+    }
 
+    .card-stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 110px;
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 12px 20px;
+      box-shadow: 0 0 0 1px #f1f1f1;
+    }
+
+    .card-stat .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+    }
+
+    .card-stat .left .icon {
+      width: 20px;
+      margin-bottom: 6px;
+    }
+
+    .card-stat .value {
+      font-size: 24px;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .card-stat .label {
+      font-size: 14px;
+      color: #888;
+      font-weight: 500;
+    }
+
+    .card-stat .right img {
+      height: 36px;
+    }
+
+    .bg-slash-h {
+      background: linear-gradient(160deg, #FFFFFF 55%, #FFF3E5 45%);
+    }
+
+    h6 {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .table th,
+    .table td {
+      font-size: 14px;
+      vertical-align: middle;
+    }
+
+    .text-dark {
+      color: #000000;
+      opacity: 0.4;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .table th {
+      color: #555;
+      font-weight: 600;
+      background-color: #f1f1f1;
+    }
+
+    .btn-play {
+      background: linear-gradient(160deg, #FF9500 55%, #FF9F19 45%);
+      color: white !important;
+      font-weight: 700;
+      font-size: 18px;
+      padding: 20px;
+      text-align: center;
+      height: 100%;
+    }
+
+    .btn-play a {
+      color: #fff
+    }
+
+    .btn-play i {
+      font-size: 32px;
+      vertical-align: middle;
+    }
+
+    .leaderboard,
+    .new-players,
+    .quiz-history,
+    .user-profile {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.05);
+      color: #000000;
+    }
+
+    .user-profile .light-text {
+      opacity: 0.6;
+    }
+
+    .profile-img {
+      width: 120px !important;
+      height: 120px !important;
+      /* height: 120px;
+      object-fit: cover; */
+    }
+
+    .card-numbers {
+      color: #000000;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .leaderboard {
+      padding: 16px;
+    }
+
+    .leaderboard h6 {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 16px;
+    }
+
+    .leaderboard-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      border: 1px solid #E8E8E8;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      background-color: #f9fafb;
+    }
+
+    .leaderboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 16px;
+      border-radius: 8px;
+      margin-bottom: 4px;
+      font-size: 14px;
+      font-weight: 700;
+      opacity: 0.4;
+      text-align: center;
+    }
+
+    .leaderboard-entry .rank,
+    .leaderboard-header .rank {
+      width: 50px;
+    }
+
+    .leaderboard-entry .rank {
+      font-weight: 700;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .leaderboard-entry .name,
+    .leaderboard-header .name {
+      flex: 1;
+      margin-left: 12px;
+    }
+
+    .leaderboard-entry .score,
+    .leaderboard-header .score {
+      width: 50px;
+      text-align: right;
+    }
+
+    .leaderboard-entry .score {
+      color: #22c55e;
+      font-weight: 600;
+    }
+
+    .leaderboard .leaderboard-text {
+      text-align: left;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .leaderboard .name {
+      text-align: center;
+      color: #000000
+    }
+
+    div.result {
+      background-color: transparent;
+      color: #000;
+      font-size: 12px;
+      letter-spacing: 0;
+    }
+
+    .user-profile .user-name {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .qualified {
+      color: #17A43B;
+      font-weight: 700;
+    }
+
+    .not-qualified {
+      color: #DE5753;
+      font-weight: 700;
+
+    }
+
+    .quiz-button {
+      font-size: 1.5rem;
+    }
+
+    .quiz-button i {
+      font-size: 3rem;
+    }
+  </style>
 </head>
 
 <body class="nav-md">
   <div class="container body">
     <div class="main_container">
-      <style>
-        .bg-slash-h {
-          background: linear-gradient(160deg, #FFFFFF 55%, #FFF3E5 45%);
-        }
-      </style>
-
-
-
       {% block user_dashboard_side_menu %}
       {% include 'userdashboard/user_dashboard_side_menu.html' %}
-
       {% endblock user_dashboard_side_menu %}
-
-
 
       {% block use_dashboard_top_navigation %}
       {% include 'userdashboard/use_dashboard_top_navigation.html' %}
-
       {% endblock use_dashboard_top_navigation %}
 
-
-
-
-
-
       {% block use_dashboard_content %}
-
-
-
-
-
-      <!-- page content -->
-
-
-
-      <!-- page content -->
-
-
-
       <div class="right_col" role="main">
-
-        <div class="row p-2 justify-content-around d-flex " style="">
-
-
-
-          <div class="col-md-3 col-sm-4    ">
-
-            <div class=" card py-4 shadow bg-slash-h   ">
-              <div class="row  ">
-
-                <div class="col-lg-8 col-md-8 col-sm-8 text-white " style="">
-                  <br>
-                  <h6 class="text-center text-dark "> User Satisfaction Rate </h6>
-                  <h3 class="text-center  " style="color:#FF9500; font-weight: 700;"> {{ user_satisfaction_rate }} </h3>
-
-
-
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 " style="">
-                  <img src="{% static 'core/images/TotalPlayed.png' %}" class="img-fluid px-1 mt-3" alt="">
-
-
-                </div>
+        <div class="row p-2 justify-content-around d-flex">
+          <!-- Cards -->
+          <div class="col-md-3">
+            <div class="card-stat">
+              <div class="left">
+                <img src="{% static 'core/images/chart-line.png' %}" alt="chart" class="icon">
+                <div class="value">{{ user_satisfaction_rate }}</div>
+                <div class="label">User Satisfaction Rate</div>
               </div>
-
-
-            </div>
-
-          </div>
-
-
-          <div class="col-md-3 col-sm-4">
-            <div class=" card py-4 bg-slash-h  shadow ">
-              <div class="row  ">
-                <div class="col-lg-7 text-white " style="">
-                  <br>
-                  <h6 class="text-center text-dark ">User Growth Rate </h6>
-
-                  <h3 class="text-center " style="color:#FF9500; font-weight: 700;"> {{ user_growth_rate }} </h3>
-                </div>
-                <div class="col-lg-4">
-                  <img src="{% static 'core/images/TotalUsers.png' %}" class="img-fluid px-1 mt-3" alt="">
-
-
-                </div>
+              <div class="right">
+                <img src="{% static 'core/images/bulb.png' %}" alt="bulb">
               </div>
-
             </div>
           </div>
 
-
-
-          <div class="col-md-3 col-sm-4">
-            <div class=" card py-4 bg-slash-h  shadow ">
-              <div class="row  ">
-                <div class="col-lg-7 text-white ">
-                  <br>
-                  <h6 class="text-center text-dark"> {{ next_segment }} </h6>
-                  <h3 class="text-center " style="color:#FF9500; font-weight: 700;"> </h3>
-                </div>
-                <div class="col-lg-4" style="">
-
-                  <img src="{% static 'core/images/TotalWinners.png' %}" class="img-fluid px-1 mt-3" alt="">
-
-
-                </div>
+          <div class="col-md-3">
+            <div class="card-stat">
+              <div class="left">
+                <img src="{% static 'core/images/chart-line.png' %}" alt="chart" class="icon">
+                <div class="value">{{ user_growth_rate }}</div>
+                <div class="label">User Growth Rate</div>
               </div>
-
+              <div class="right">
+                <img src="{% static 'core/images/people.png' %}" alt="people">
+              </div>
             </div>
           </div>
 
-
-          <div class="col-md-3 col-sm-4">
-            <a href="  {% url  'open_quiz'  %}  ">
-              <div class=" card py-4  shadow " style="background: linear-gradient(160deg, #FF9500 55%, #FF9F19 45%);">
-
-                <div class="row  ">
-                  <div class="col-lg-8 text-white ">
-                    <h3 class="text-center text-dark "> Play Quiz </h3>
-                    <h3 class="text-center " style="color:#FF9500; font-weight: 700;"> </h3>
-                  </div>
-                  <div class="col-lg-4">
-
-                    <i class=" text-white fa-5x fa fa-chevron-circle-right  " style="line-height: 90px ;"></i>
-
-
-
-                  </div>
-                </div>
-
+          <div class="col-md-3">
+            <div class="card-stat">
+              <div class="left">
+                <img src="{% static 'core/images/chart-line.png' %}" alt="chart" class="icon">
+                <div class="value">{{ next_segment }}</div>
+                <div class="label">Next Segment Starting</div>
               </div>
-            </a>
-          </div>
-
-
-          <br>
-          <br>
-
-
-          <div class="col-lg-6  mt-3    " style="background-color: #D3D3D3	 ;">
-            <div class='card w-100  shadow  '>
-
-              <table class="table table-sm p-2  ">
-                <thead>
-                  <tr>
-                    <th colspan='2' style="border: none !important;"> Your Quiz History</th>
-                  </tr>
-
-                  <tr>
-                    <th colspan='' style=""> Rank</th>
-                    <th class=""> Quiz Name </th>
-                    <th class=""> Date </th>
-                    <th class="text-right"> Score | Time </th>
-                    <th class="text-right"> Score % </th>
-                    <th class="text-right"> Submitted At </th>
-                    <th class="text-right"> Status </th>
-
-
-                  </tr>
-
-                </thead>
-
-
-                {% if my_result %}
-                {% for i in my_result %}
-                <tbody>
-                  <tr>
-                    <td> {{ forloop.counter }} </td>
-                    <td> {{ i.quizopen.quiz_name }} </td>
-                    <td class=""> {{ i.quizstart.user_quiz_start_time }} </td>
-                    <td class="text-right"> {{ i.corrent_anwswer }} | {{ i.user_time_duration_actual }} </td>
-                    <td class="text-right"> {{ i.awnsers_percantage }} </td>
-                    <td class="text-right"> {{ i.submittedAt }} </td>
-                    <td class="text-right"> {{ i.marit_status }} </td>
-
-
-                  </tr>
-                </tbody>
-
-
-                {% endfor %}
-
-
-                {% endif %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              </table>
+              <div class="right">
+                <img src="{% static 'core/images/medal.png' %}" alt="people">
+              </div>
             </div>
           </div>
 
-          <div class="col-lg-3  mt-3   ">
-            <div class="row">
-
-              <div class="col-lg-12">
-
-                <div class=" card py-4 shadow bg-slash-h   ">
-                  <div class="row  ">
-                    <div class="col-lg-11 col-md-7 col-sm-7 text-dark " style="">
-                      <h6 class=' text-center text-dark  '> &nbsp; YOUR PROFILE </h6>
-
-                    </div>
-
-
-                    <div class="col-lg-7 col-md-7 col-sm-7 text-dark  text-center " style="">
-
-                      <h6> {{ user_profile_records.username }} </h6>
-                      <table class='text-center w-100 '>
-                        <tr>
-                          <td class="text-dark  ">
-                            Joining Date : {{ user_profile_records.joining_date }}
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-dark  ">
-                            Quiz Played : {{ user_profile_records.my_quiz_played_count }}
-                          </td>
-
-                        </tr>
-
-
-
-
-                      </table>
-
-                      <br>
-
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 " style="">
-                      <img src="{% static 'core/images/profile.png' %} " class='img-fluid px-2 ' alt=""
-                        style="width: 60px; height:60px; ">
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-              <br>
-
-              <div class="col-lg-12">
-                <br>
-                <div class=" card  shadow">
-
-
-
-
-
-
-                  <table class="table table-sm   " style="border-top: none !important;">
-                    <thead>
-                      <tr style="border: none !important;">
-                        <th style="border: none !important;" colspan=''> &nbsp; &nbsp; &nbsp; NEW PLAYERS</th>
-                      </tr>
-                    </thead>
-                    {% if user_list %}
-                    {% for i in user_list %}
-
-
-                    <tbody>
-                      <tr>
-
-                        <td> &nbsp; &nbsp; &nbsp; {{ i.first_name }} </td>
-
-                      </tr>
-                    </tbody>
-                    {% endfor %}
-                    {% endif %}
-
-
-                  </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                  </table>
-
-
-
-                </div>
-
-
-              </div>
-
-            </div>
-
-
-          </div>
-
-
-          <div class="col-lg-3  mt-3  ">
-            <div class='card w-100 py-3  shadow '>
-
-
-
-              <table class="table table-sm p-1 " style="border-top: none !important;">
-                <thead>
-                  <tr style="border: none !important;">
-                    <th style="border: none !important;" colspan='3'> LEADERBOARD </th>
-                  </tr>
-                  <tr>
-                    <th colspan='' style=""> Rank</th>
-                    <th class="text-center"> Name </th>
-                    <th class="text-right"> Score | Time </th>
-                    <!-- <th class="text-right"> Submitted At </th> -->
-                  </tr>
-                </thead>
-                {% if result %}
-                {% for i in result %}
-                <tbody>
-                  <tr>
-                    <td> {{ forloop.counter }} </td>
-                    <td> {{ i.users.username }} </td>
-                    <td class="text-right">
-                      {{ i.corrent_anwswer }} | {{ i.user_time_duration_actual }} </td>
-                    <!-- <td>{{i.creation}}</td> -->
-                  </tr>
-                </tbody>
-                {% endfor %}
-                {% endif %}
-
-              </table>
-
-
-
-
+          <div class="col-md-3">
+            <div class="card-stat btn-play">
+              <a href="{% url 'open_quiz' %}" class="quiz-button">
+                Play Quiz
+                <i class="fa fa-chevron-circle-right"></i>
+              </a>
             </div>
           </div>
 
+          <div class="col-lg-6 mt-3">
+            <div class="card quiz-history leaderboard">
+              <h6 class="leaderboard-text">Your Quiz History</h6>
+              <div class="leaderboard-header">
+                <div>Rank</div>
+                <div>Quiz Name</div>
+                <div>Date</div>
+                <div>Score</div>
+                <div>Percentage</div>
+                <div>Status</div>
+              </div>
+              {% if my_result %}
+              {% for i in my_result %}
+              <div class="leaderboard-entry result">
+                <div class="rank">#{{ forloop.counter }}</div>
+                <div style=margin-left:-20px>{{ i.quizopen.quiz_name }}</div>
+                <div>{{ i.creation|date:"d M Y" }}</div>
+                <div>{{ i.corrent_anwswer }}</div>
+                <div>{{ i.awnsers_percantage }}%</div>
+                <div class="{% if i.marit_status == 'QUALIFIED' %}qualified{% else %}not-qualified{% endif %}">
+                  {{ i.marit_status|upper }}
+                </div>
+              </div>
+              {% endfor %}
+              {% endif %}
+            </div>
+          </div>
 
+          <!-- Profile & New Players -->
+          <div class="col-lg-3 mt-3">
+            <div class="card user-profile leaderboard">
+              <h6 class="text-center">Your Profile</h6>
+              <div class="text-center">
+                <img src="{% static 'core/images/profile-image.png' %}" alt="Profile Image" class="profile-img">
+              </div>
+              <div class="text-center mt-3">
+                <h6 class="user-name">{{ user_profile_records.username }}</h6>
+                <p class="light-text m-0">Joining Date: {{ user_profile_records.joining_date }}</p>
+                <p class="light-text m-0">Quiz Played: {{ user_profile_records.my_quiz_played_count }}</p>
+              </div>
+            </div>
 
+            <div class="card leaderboard">
+              <h6 class="text-center">New Players</h6>
+              {% if user_list %}
+              {% for i in user_list %}
+              <div class="leaderboard-entry">
+                <div class="name">{{ i.first_name }}</div>
+              </div>
+              {% endfor %}
+              {% endif %}
+            </div>
+          </div>
 
-
-
+          <div class="col-lg-3 mt-3">
+            <div class="card leaderboard">
+              <h6 class="leaderboard-text">Leader Board</h6>
+              <div class="leaderboard-header">
+                <div class="rank">Rank</div>
+                <div class="name">Name</div>
+                <div class="score">Score</div>
+              </div>
+              {% if result %}
+              {% for i in result %}
+              <div class="leaderboard-entry">
+                <div class="rank">#{{ forloop.counter }}</div>
+                <div class="name">{{ i.users.username }}</div>
+                <div class="score">{{ i.corrent_anwswer }}</div>
+              </div>
+              {% endfor %}
+              {% endif %}
+            </div>
+          </div>
         </div>
-
-        <br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
-
-
-
-
-      <!-- /page content -->
-
-
-
-
-      <!-- /page content -->
-
-
       {% endblock use_dashboard_content %}
 
-
-
       {% block use_dashboard_footer %}
-
       {% endblock use_dashboard_footer %}
     </div>
   </div>
-
 
   {% block footer_js_links %}
   {% include 'userdashboard/footer_js_links.html' %}
   {% endblock footer_js_links %}
 
-
-
   {% block extra_footer_js_links %}
   {% include 'userdashboard/extra_footer_js_links.html' %}
   {% endblock extra_footer_js_links %}
-
-
-
 </body>
 
 </html>
