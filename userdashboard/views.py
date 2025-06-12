@@ -624,7 +624,8 @@ def submit_quiz_result(request):
                                 ):
                                     print("This Quiz Result Already Submitted ")
                                     messages.success(
-                                        "Against This Quiz Result Aready submitted"
+                                        request,
+                                        "Against This Quiz Result Aready submitted",
                                     )
                                 else:
                                     print("")
@@ -647,21 +648,10 @@ def submit_quiz_result(request):
                                                     )
                                                 )
                                                 if attmpt:
-                                                    total_attempt_answer += 1
                                                     for h in attmpt:
-                                                        if (
-                                                            h.status == "SKIPPED"
-                                                            and h.submitted_answer == 0
-                                                        ):
+                                                        if h.status == "SKIPPED":
                                                             total_skipped_answer += 1
-                                                            print(
-                                                                "===skipped",
-                                                                total_skipped_answer,
-                                                            )
-                                                            messages.success(
-                                                                request, "SKIPPED"
-                                                            )
-                                                        if (
+                                                        elif (
                                                             h.status == "SUBMITTED"
                                                             and h.submitted_answer != 0
                                                         ):
@@ -671,6 +661,8 @@ def submit_quiz_result(request):
                                                             == h.submitted_answer
                                                         ):
                                                             total_corrent_answer += 1
+                                                        if h.status != "SKIPPED":
+                                                            total_attempt_answer += 1
                                                 else:
                                                     print(" Record Not Found.  ")
                                                     remain_quiz = QuizattemptModel.objects.create(
@@ -725,7 +717,7 @@ def submit_quiz_result(request):
         return redirect("login")
     return render(
         request=request,
-        # template_name="userdashboard/submit_quiz_result.html",
+        template_name="userdashboard/submit_quiz_result.html",
         context=context,
     )
 

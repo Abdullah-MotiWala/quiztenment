@@ -47,17 +47,6 @@ class SignUpForm(UserCreationForm):
         label="User Name",
         widget=forms.EmailInput(attrs={"class": "form-control form-control-sm "}),
     )
-    terms_condition = forms.BooleanField(
-        label="Terms & Conditions",
-        widget=forms.CheckboxInput(
-            attrs={"required": "required", "checked": "checked"}
-        ),
-    )
-    category = forms.ChoiceField(
-        choices=CATEGORY_CHOICES,
-        label="Category",
-        widget=forms.Select(attrs={"class": "form-control form-control-sm"}),
-    )
 
     class Meta:
         model = User

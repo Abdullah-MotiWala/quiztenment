@@ -1,125 +1,127 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    
-    {% block user_dashboard_meta_html %}
 
-    {% include 'userdashboard/user_dashboard_meta_html.html' %} 
+<head>
 
+  {% block user_dashboard_meta_html %}
 
-
-    
-    {% endblock user_dashboard_meta_html %}
+  {% include 'userdashboard/user_dashboard_meta_html.html' %}
 
 
-    
-    {% block user_dashbaord_title %}
-      
-    <title> Play Quiz  </title>
 
 
-    {% endblock user_dashbaord_title %}
-      
-        
+  {% endblock user_dashboard_meta_html %}
 
 
-    
-    {% block header_html_links %}
-    {% include 'userdashboard/header_html_links.html' %}
-      
-    {% endblock header_html_links %}
-      
+
+  {% block user_dashbaord_title %}
+
+  <title> Play Quiz </title>
 
 
-  </head>
-
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-
-
-        
-        {% block user_dashboard_side_menu %}
-        {% include 'userdashboard/user_dashboard_side_menu.html' %}
-          
-        {% endblock user_dashboard_side_menu %}
-          
-
-
-        {% block use_dashboard_top_navigation %}
-        {% include 'userdashboard/use_dashboard_top_navigation.html' %}
-          
-        {% endblock use_dashboard_top_navigation %}
-          
+  {% endblock user_dashbaord_title %}
 
 
 
 
 
-        {% block use_dashboard_content %}
-          
-          
+  {% block header_html_links %}
+  {% include 'userdashboard/header_html_links.html' %}
+
+  {% endblock header_html_links %}
 
 
 
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <!-- top tiles Heading  -->
+</head>
+
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
 
 
-          <div class="row">
-            <div class="col-lg-6"> 
-              <div class="card shadow ">
+
+      {% block user_dashboard_side_menu %}
+      {% include 'userdashboard/user_dashboard_side_menu.html' %}
+
+      {% endblock user_dashboard_side_menu %}
+
+
+
+      {% block use_dashboard_top_navigation %}
+      {% include 'userdashboard/use_dashboard_top_navigation.html' %}
+
+      {% endblock use_dashboard_top_navigation %}
+
+
+
+
+
+
+      {% block use_dashboard_content %}
+
+
+
+
+
+      <!-- page content -->
+      <div class="right_col" role="main">
+        <!-- top tiles Heading  -->
+
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card shadow ">
               <div class="row  px-2 ">
                 <div class="col-lg-6 ">
                   <br>
                   <br>
-                  <img width="100%"
-                  src="{% static 'core/images/Banner-Quiztainment-thumbnail2.jpg' %}" alt="">
+                  <img width="100%" src="{% static 'core/images/Banner-Quiztainment-thumbnail2.jpg' %}" alt="">
 
                 </div>
                 <div class="col-lg-6">
                   <br>
-        
 
 
-                  <h3> {{ quiz_records.quiz_name  }} </h3>
+
+                  <h3> {{ quiz_records.quiz_name }} </h3>
                   <table class="table table-sm small w-100 " style="border:none !important;">
                     <tr>
-                      <td> Quiz Start Date </td> <td>  {{ quiz_records.start_date_time  }}   </td>
+                      <td> Quiz Start Date </td>
+                      <td> {{ quiz_records.start_date_time }} </td>
                     </tr>
                     <tr>
-                      <td>  <b> Last Date To Participate </b> </td> <td> <b> {{ quiz_records.end_date_time  }}  </b> </td>
+                      <td> <b> Last Date To Participate </b> </td>
+                      <td> <b> {{ quiz_records.end_date_time }} </b> </td>
                     </tr>
                     <tr>
-                      <td> Number of Questions </td> <td>  {{ quiz_records.quiz_numbers  }}  </td>
+                      <td> Number of Questions </td>
+                      <td> {{ quiz_records.quiz_numbers }} </td>
                     </tr>
                     <tr>
-                      <td> Duration {{ quiz_records.duation_time  }}   </td>
+                      <td> Duration {{ quiz_records.duation_time }} </td>
 
-                        <td>    Payment   Rs. {{ quiz_records.quiz_payment  }} /-  </td>
+                      <td> Payment Rs. {{ quiz_records.quiz_payment }} /- </td>
                     </tr>
 
 
                     <tr>
-                      <td class="" colspan="2" > 
+                      <td class="" colspan="2">
 
-                        
-                        {% if quiz_records.quiz_id  %}
+
+                        {% if quiz_records.quiz_id %}
                         <form class="w-100 d-flex d-inline " action="{% url 'start_quiz'   %}" method="POST">
                           {% csrf_token %}
-                          <input type="hidden"  
-                          value="{{ quiz_records.quiz_id }}" name="open_quiz_id" 
-                          id  ="open_quiz_id">
-                          <button type="submit" class="btn btn-sm "style="width: 97%;  color:white; background-color:#14A43B " > Start Quiz </button>
+                          <input type="hidden" value="{{ quiz_records.quiz_id }}" name="open_quiz_id" id="open_quiz_id">
+                          <button type="submit" class="btn btn-sm "
+                            style="width: 97%;  color:white; background-color:#14A43B "> Start Quiz </button>
                         </form>
 
-                        
+
                         {% endif %}
-                          
-      
-      
+
+
+
 
 
 
@@ -135,110 +137,111 @@
                 <br>
                 <div class="col-lg-12">
                   <hr>
-                  <table class="table table-sm p-2  " > 
+                  <table class="table table-sm p-2  ">
                     <thead>
-                    <tr>
-                        <th colspan = '2' style="border: none !important;"  > Your Quiz History </th>
-                        <th class="text-right" style="border: none !important;"  >  </th>
-                    </tr>
-                    <tr>
-                        <th colspan = '' style=""  > SN # </th>
-                        <th class=""> Quiz Name    </th>
+                      <tr>
+                        <th colspan='2' style="border: none !important;"> Your Quiz History </th>
+                        <th class="text-right" style="border: none !important;"> </th>
+                      </tr>
+                      <tr>
+                        <th colspan='' style=""> SN # </th>
+                        <th class=""> Quiz Name </th>
 
-                        <th class=""  >  Date    </th>
-                        <th class="text-right"  >  Score | Time     </th>
-                        <th class="text-right"  >  Score %     </th>
-                        <th class="text-right"  >  Status      </th>
-
-
-                    </tr>
-                </thead>
-                {% if  my_result %}
-                {% for i in  my_result %}
-                <tbody>
-                    <tr>
-                        <td>  {{ forloop.counter  }}  </td> 
-                        <td> {{ i.quizopen.quiz_name }} </td>  
-
-                        <td class=""  >   {{ i.quizstart.user_quiz_start_time }}    </td>
-                        <td class="text-right"  > {{ i.corrent_anwswer }} | {{ i.user_time_duration_actual }}     </td>
-                        <td class="text-right"  >   {{ i.awnsers_percantage }}     </td>
-                        <td class="text-right"  >  {{ i.marit_status }}      </td>
+                        <th class=""> Date </th>
+                        <th class="text-right"> Score | Time </th>
+                        <th class="text-right"> Score % </th>
+                        <th class="text-right"> Status </th>
 
 
+                      </tr>
+                    </thead>
+                    {% if my_result %}
+                    {% for i in my_result %}
+                    <tbody>
+                      <tr>
+                        <td> {{ forloop.counter }} </td>
+                        <td> {{ i.quizopen.quiz_name }} </td>
+
+                        <td class=""> {{ i.quizstart.user_quiz_start_time }} </td>
+                        <td class="text-right"> {{ i.corrent_anwswer }} | {{ i.user_time_duration_actual }} </td>
+                        <td class="text-right"> {{ i.awnsers_percantage }} </td>
+                        <td class="text-right"> {{ i.marit_status }} </td>
 
 
-                    </tr>
-              </tbody>
-                {% endfor %}
-                {% else %}
-                <tbody>
-                  <tr>
-                    <td colspan="7" class = ' py-2 text-center bg-success text-white' >  You have not Participated yet  </td> 
- 
-                  </tr>
-            </tbody>
-              
-                  
-                {% endif %}
 
-            </table>
+
+                      </tr>
+                    </tbody>
+                    {% endfor %}
+                    {% else %}
+                    <tbody>
+                      <tr>
+                        <td colspan="7" class=' py-2 text-center bg-success text-white'> You have not Participated yet
+                        </td>
+
+                      </tr>
+                    </tbody>
+
+
+                    {% endif %}
+
+                  </table>
 
 
                 </div>
               </div>
-              
+
             </div>
-            </div>
-            <div class="col-lg-6"> 
+          </div>
+          <div class="col-lg-6">
 
 
-              <div class =  'card w-100 py-3  shadow ' > 
-
-
-
-                <table class="table table-sm p-2  " style="border-top: none !important;"  > 
-                    <thead>
-                    <tr style="border: none !important;" >
-                        <th style="border: none !important;"  colspan = '3' > LEADERBOARD </th>
-                    </tr>
-                    <tr>
-                        <th colspan = '' style=""  > Rank</th>
-                        <th class=""> Contestant    </th>
-                        <th class="text-right"  >  Score     </th>
-                        <th class="text-right"  >  Time     </th>
-                        <th class="text-right"  >  Score %     </th>
+            <div class='card w-100 py-3  shadow '>
 
 
 
-                    </tr>
+              <table class="table table-sm p-2  " style="border-top: none !important;">
+                <thead>
+                  <tr style="border: none !important;">
+                    <th style="border: none !important;" colspan='3'> LEADERBOARD </th>
+                  </tr>
+                  <tr>
+                    <th colspan='' style=""> Rank</th>
+                    <th class=""> Contestant </th>
+                    <th class="text-right"> Score </th>
+                    <th class="text-right"> Time </th>
+                    <th class="text-right"> Score % </th>
+
+
+
+                  </tr>
                 </thead>
-                {% if  result %}
+                {% if result %}
                 {% for i in result %}
                 <tbody>
-                    <tr>
+                  <tr>
 
-                          <td>  {{ forloop.counter   }}  </td> 
-                          <td> {{ i.users.username }} </td>  
-                          <td class="text-right"  > 
-                            {{ i.corrent_anwswer }} 
-                          </td>
-                          <td class="text-right"  > 
-                            {{ i.user_time_duration_actual }}  
-                            
-                          </td>
-  
-                          <td class="text-right"  > 
-                              {{ i.awnsers_percantage }}
-                          </td>
-  
-  
+                    <td> {{ forloop.counter }} </td>
+                    <td> {{ i.users.username }} </td>
+                    <td class="text-right">
+                      {{ i.corrent_anwswer }}
+                    </td>
+                    <td class="text-right">
+                      {{ i.user_time_duration_actual }}
 
-                        </tr>
-              </tbody>
+                    </td>
+
+                    <td class="text-right">
+                      {{ i.awnsers_percantage }}
+                    </td>
+
+
+
+                  </tr>
+                </tbody>
                 {% endfor %}
                 {% endif %}
-                  
+
 
 
 
@@ -251,44 +254,45 @@
 
 
 
-            </div>
           </div>
-
-
-
-
-          <!-- /Main Content row  -->
-
-
-
-
-
         </div>
-        <!-- /page content -->
 
 
-        {% endblock use_dashboard_content %}
 
 
-        
-        {% block use_dashboard_footer %}
-     
-        {% endblock use_dashboard_footer %}
+        <!-- /Main Content row  -->
+
+
+
+
+
       </div>
+      <!-- /page content -->
+
+
+      {% endblock use_dashboard_content %}
+
+
+
+      {% block use_dashboard_footer %}
+
+      {% endblock use_dashboard_footer %}
     </div>
-
-    
-    {% block footer_js_links %}
-    {% include 'userdashboard/footer_js_links.html' %}      
-    {% endblock footer_js_links %}
+  </div>
 
 
+  {% block footer_js_links %}
+  {% include 'userdashboard/footer_js_links.html' %}
+  {% endblock footer_js_links %}
 
-    {% block extra_footer_js_links %}
-    {% include 'userdashboard/extra_footer_js_links.html' %}      
-    {% endblock extra_footer_js_links %}
 
 
-	
-  </body>
+  {% block extra_footer_js_links %}
+  {% include 'userdashboard/extra_footer_js_links.html' %}
+  {% endblock extra_footer_js_links %}
+
+
+
+</body>
+
 </html>
